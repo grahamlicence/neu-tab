@@ -23,6 +23,22 @@ module.exports = function(grunt) {
             build: {}
         },
 
+        /*  Concat concatenates the minified jQuery and our uglified code.
+            We should try to refrain from re-minifying libraries because
+            they probably do a better job of minifying their own code then us.   
+        */
+        concat: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM") %> */\n'
+            },
+            dist: {
+                src: [
+                    'src/js/*'
+                ],
+                dest: 'src/assets/tab.min.js'
+            }
+        },
+
         /*  Copy files to production folder.
         */
         copy: {
@@ -56,6 +72,10 @@ module.exports = function(grunt) {
             css: {
                 files: 'src/sass/**/*.scss',
                 tasks: ['compass']
+            },
+            js: {
+                files: 'src/js/**/*.js',
+                tasks: ['concat']
             }
         }
     });
