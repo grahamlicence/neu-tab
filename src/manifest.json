@@ -8,6 +8,7 @@
       "16": "images/icon16.png",
       "96": "images/icon96.png"
    },
+   "permissions": [ "geolocation", "maps.googleapis.com", "yahooapis.com" ],
    "manifest_version": 2,
    "name": "Neu Tab",
    "version": "0.0.1"
