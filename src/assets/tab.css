@@ -435,3 +435,15 @@ h1 {
 * {
   font-family: istokregular;
 }
+
+/* line 5, ../sass/modules/_weather.scss */
+.forecast {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 9, ../sass/modules/_weather.scss */
+.forecast li {
+  float: left;
+  margin-right: 0.5em;
+}
