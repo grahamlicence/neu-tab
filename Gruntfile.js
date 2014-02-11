@@ -95,7 +95,9 @@ module.exports = function(grunt) {
     */
     grunt.registerTask('css', ['compass']);
     grunt.registerTask('js', ['uglify']);
+
+    // minify and copy files over to production folder
     grunt.registerTask('release', ['uglify', 'compass', 'copy']);
 
-    grunt.registerTask('default', ['css', 'js']);
+    grunt.registerTask('default', ['watch']);
 };
