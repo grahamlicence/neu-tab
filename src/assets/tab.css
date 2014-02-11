@@ -419,7 +419,19 @@ table {
   border-spacing: 0;
 }
 
-/* line 1, ../sass/modules/_typography.scss */
+@font-face {
+  font-family: 'istokregular';
+  src: url("fonts/istok-regular-webfont.svg#istokregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 21, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
+}
+
+/* line 25, ../sass/modules/_typography.scss */
+* {
+  font-family: istokregular;
 }

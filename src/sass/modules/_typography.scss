@@ -1,3 +1,27 @@
+
+// @font-face {
+//     font-family: 'istokregular';
+//     src: url('istok-regular-webfont.eot');
+//     src: url('istok-regular-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('istok-regular-webfont.woff') format('woff'),
+//          url('istok-regular-webfont.ttf') format('truetype'),
+//          url('istok-regular-webfont.svg#istokregular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+
+@font-face {
+    font-family: 'istokregular';
+    src: url('fonts/istok-regular-webfont.svg#istokregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 { 
   font-size: 2em;
+}
+
+* {
+    font-family: istokregular;
 }
