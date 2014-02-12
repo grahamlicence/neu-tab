@@ -440,6 +440,7 @@ h1 {
 
 /* line 18, ../sass/modules/_typography.scss */
 p {
+  font-size: 1em;
   font-family: istokregular;
   margin: 0 0 0.3em;
   line-height: 2;
@@ -476,9 +477,10 @@ p {
 /* line 15, ../sass/modules/_weather.scss */
 .forecast p {
   line-height: 1;
+  font-size: 0.95em;
 }
 
-/* line 20, ../sass/modules/_weather.scss */
+/* line 21, ../sass/modules/_weather.scss */
 .weather-now {
   font-size: 1.5em;
 }
