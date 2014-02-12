@@ -426,19 +426,31 @@ table {
   font-style: normal;
 }
 
-/* line 8, ../sass/modules/_typography.scss */
-body {
-  background: #E0E0FF;
-  color: #606090;
-  text-align: center;
+/* line 7, ../sass/modules/_typography.scss */
+html {
+  height: 100%;
 }
 
-/* line 14, ../sass/modules/_typography.scss */
+/* line 10, ../sass/modules/_typography.scss */
+body {
+  height: 100%;
+  background: url(images/loader.gif) no-repeat center #e0e0ff;
+  color: #E0E0FF;
+  text-align: center;
+  -webkit-transition: color 0.5s;
+}
+/* line 16, ../sass/modules/_typography.scss */
+body.load {
+  background: #E0E0FF;
+  color: #606090;
+}
+
+/* line 22, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 18, ../sass/modules/_typography.scss */
+/* line 26, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: istokregular;

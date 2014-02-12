@@ -4,11 +4,19 @@
     font-weight: normal;
     font-style: normal;
 }
-
+html {
+    height: 100%;
+}
 body {
-    background: #E0E0FF;
-    color: #606090;
+    height: 100%;
+    background: url(images/loader.gif) no-repeat center #E0E0FF;
+    color: #E0E0FF;
     text-align: center;
+    -webkit-transition: color 0.5s;
+    &.load {
+        background: #E0E0FF;
+        color: #606090;
+    }
 }
 
 h1 { 

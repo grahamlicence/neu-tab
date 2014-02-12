@@ -80,6 +80,7 @@ Tab.locationData = function () {
         });
 
         weather.innerHTML = html;
+        document.getElementsByTagName('body')[0].className = 'load';
     }
 
     function weatherForecast () {
@@ -213,3 +214,7 @@ Tab.init = function  () {
 };
 
 Tab.init();
+
+
+// news feeds view-source:http://www.richmondandtwickenhamtimes.co.uk/news/rss/
+// http://feeds.bbci.co.uk/news/rss.xml
