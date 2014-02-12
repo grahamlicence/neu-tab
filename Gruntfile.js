@@ -63,6 +63,7 @@ module.exports = function(grunt) {
             },
             build: {
                 src: [
+                    'src/libs/**/*.js',
                     'src/js/*'
                 ],
                 dest: 'src/assets/tab.min.js'
