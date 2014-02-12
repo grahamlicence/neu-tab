@@ -461,6 +461,11 @@ p {
   text-align: left;
 }
 
+/* line 12, ../sass/modules/_time.scss */
+.hr {
+  text-align: right;
+}
+
 /* line 5, ../sass/modules/_weather.scss */
 .forecast {
   list-style: none;
@@ -483,4 +488,10 @@ p {
 /* line 21, ../sass/modules/_weather.scss */
 .weather-now {
   font-size: 1.5em;
+}
+
+/* line 25, ../sass/modules/_weather.scss */
+.sunset {
+  line-height: 1;
+  margin-bottom: 1em;
 }

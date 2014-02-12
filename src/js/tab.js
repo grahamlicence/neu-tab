@@ -2,30 +2,43 @@ var Tab = {};
 
 Tab.showTime = function () {
     "use strict";
-    var elem = document.createElement('p');
-    var updateClock = function() {
-        // Gets the current time
-        var now = new Date(),
-            hours = now.getHours(),
-            minutes = now.getMinutes(),
-            seconds = now.getSeconds();
+    var time = document.createElement('p'),
+        date = document.createElement('p'),
+        updateClock = function() {
+            // Gets the current time
+            var now = new Date(),
+                hours = now.getHours(),
+                minutes = now.getMinutes(),
+                seconds = now.getSeconds();
 
-        // Format display
-        if (hours < 10) {
-            hours = '0' + hours;
-        }
-        if (minutes < 10) {
-            minutes = '0' + minutes;
-        }
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
-        elem.innerHTML = '<span class="bk">' + hours + '</span>:<span class="bk">' + minutes + '</span>:<span class="bk">' + seconds + '</span>';
-    };
-    elem.className = 'current-time';
-    document.getElementsByTagName('body')[0].insertBefore(elem);
+            // Format display
+            if (hours < 10) {
+                hours = '0' + hours;
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            time.innerHTML = '<span class="bk hr">' + hours + '</span>:<span class="bk">' + minutes + '</span>:<span class="bk">' + seconds + '</span>';
+        },
+        showDay = function () {
+            var today = new Date(),
+                day = today.getDayName(),
+                month = today.getMonthName(),
+                year = today.getFullYear();
+            date.className = 'current-date';
+            date.innerHTML = day + ' ' + month + ' ' + year;
+            document.getElementsByTagName('body')[0].insertBefore(date);
+        };
+    
+    time.className = 'current-time';
+    document.getElementsByTagName('body')[0].insertBefore(time);
     setInterval(updateClock, 500);
     updateClock();
+    // show day
+    showDay();
 };
 
 Tab.locationData = function () {
@@ -53,8 +66,8 @@ Tab.locationData = function () {
         weather.className = 'weather-forecast';
         document.getElementsByTagName('body')[0].insertBefore(weather);
         console.log(results)
-        html = '<p>Sunset: ' + results.astronomy.sunset + '</p>';
-        html += '<p class="weather-now">' + results.item.condition.temp + '&deg;' + results.units.temperature + ' ' + results.item.condition.text + '</p>';
+        html = '<p class="weather-now">' + results.item.condition.temp + '&deg;' + results.units.temperature + ' ' + results.item.condition.text + '</p>';
+        html += '<p class="sunset">Sunset: ' + results.astronomy.sunset + '</p>';
         html += '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
@@ -99,7 +112,6 @@ Tab.locationData = function () {
             
     }
 
-    locationName();
     var lastChecked = parseInt(localStorage.getItem('weatherUpdate'), 10);
     // check weather every two hours
     if (Date.now() - lastChecked > 7200000) {
@@ -107,6 +119,7 @@ Tab.locationData = function () {
     } else {
         displayWeather(JSON.parse(localStorage.getItem('weatherData')));
     }
+    locationName();
 
 };
 
