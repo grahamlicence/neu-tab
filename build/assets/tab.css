@@ -419,7 +419,68 @@ table {
   border-spacing: 0;
 }
 
-/* line 1, ../sass/modules/_typography.scss */
+@font-face {
+  font-family: 'istokregular';
+  src: url("fonts/istok-regular-webfont.svg#istokregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 8, ../sass/modules/_typography.scss */
+body {
+  background: #E0E0FF;
+  color: #606090;
+  text-align: center;
+}
+
+/* line 14, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
+}
+
+/* line 18, ../sass/modules/_typography.scss */
+p {
+  font-size: 1em;
+  font-family: istokregular;
+  margin: 0 0 0.3em;
+  line-height: 2;
+}
+
+/* line 1, ../sass/modules/_time.scss */
+.current-time {
+  font-size: 4em;
+  line-height: 1;
+  width: 4em;
+  margin: 2em auto 0;
+}
+
+/* line 7, ../sass/modules/_time.scss */
+.bk {
+  display: inline-block;
+  min-width: 70px;
+  text-align: left;
+}
+
+/* line 5, ../sass/modules/_weather.scss */
+.forecast {
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+  margin: 0 auto;
+  overflow: hidden;
+}
+/* line 11, ../sass/modules/_weather.scss */
+.forecast li {
+  float: left;
+  margin-right: 0.5em;
+}
+/* line 15, ../sass/modules/_weather.scss */
+.forecast p {
+  line-height: 1;
+  font-size: 0.95em;
+}
+
+/* line 21, ../sass/modules/_weather.scss */
+.weather-now {
+  font-size: 1.5em;
 }
