@@ -56,7 +56,7 @@ Tab.locationData = function () {
     }
 
     function displayWeather (data) {
-        if (data.query === null) {
+        if (data === null) {
             weatherForecast();
             return;
         }

@@ -426,19 +426,35 @@ table {
   font-style: normal;
 }
 
-/* line 8, ../sass/modules/_typography.scss */
-body {
-  background: #E0E0FF;
-  color: #606090;
-  text-align: center;
+/* line 7, ../sass/modules/_typography.scss */
+html {
+  height: 100%;
 }
 
-/* line 14, ../sass/modules/_typography.scss */
+/* line 10, ../sass/modules/_typography.scss */
+body {
+  height: 100%;
+  background: url(images/loader.gif) no-repeat center #e0e0ff;
+  color: #E0E0FF;
+  text-align: center;
+  -webkit-transition: color 0.5s;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+/* line 20, ../sass/modules/_typography.scss */
+body.load {
+  background: #E0E0FF;
+  color: #606090;
+}
+
+/* line 26, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 18, ../sass/modules/_typography.scss */
+/* line 30, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: istokregular;
@@ -451,7 +467,7 @@ p {
   font-size: 4em;
   line-height: 1;
   width: 4em;
-  margin: 2em auto 0;
+  margin: 0 auto;
 }
 
 /* line 7, ../sass/modules/_time.scss */
@@ -459,6 +475,11 @@ p {
   display: inline-block;
   min-width: 70px;
   text-align: left;
+}
+
+/* line 12, ../sass/modules/_time.scss */
+.hr {
+  text-align: right;
 }
 
 /* line 5, ../sass/modules/_weather.scss */
@@ -483,4 +504,11 @@ p {
 /* line 21, ../sass/modules/_weather.scss */
 .weather-now {
   font-size: 1.5em;
+}
+
+/* line 25, ../sass/modules/_weather.scss */
+.sunset {
+  font-size: 0.8em;
+  line-height: 1;
+  margin-bottom: 1em;
 }
