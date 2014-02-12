@@ -8,7 +8,7 @@
       "16": "assets/images/icon16.png",
       "96": "assets/images/icon96.png"
    },
-   "permissions": [ "geolocation", "http://maps.googleapis.com/", "http://weather.yahooapis.com/", "http://query.yahooapis.com/" ],
+   "permissions": [ "geolocation", "http://maps.googleapis.com/", "http://weather.yahooapis.com/", "http://query.yahooapis.com/", "http://feeds.bbci.co.uk/" ],
    "manifest_version": 2,
    "name": "Neu Tab",
    "version": "0.0.1"

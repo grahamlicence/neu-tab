@@ -208,9 +208,38 @@ Tab.getWoeid = function (place) {
     });
 };
 
+Tab.getNews = function () {
+    var feed = document.createElement('div');
+    
+    var request = new XMLHttpRequest;
+
+    request.open('GET', 'http://feeds.bbci.co.uk/news/rss.xml', true);
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400){
+        // console.log(request.responseText)
+        // return;
+        var data = JSON.parse(request.responseText);
+        console.log(data)
+
+      } else {
+        // error
+        console.log('error status')
+      }
+    };
+
+    request.onerror = function() {
+        console.log('error')
+      // There was a connection error of some sort
+    };
+
+    request.send();
+}
+
 Tab.init = function  () {
     Tab.showTime();
     Tab.getLocation();
+    // Tab.getNews();
 };
 
 Tab.init();
