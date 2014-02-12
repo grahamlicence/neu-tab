@@ -75,7 +75,10 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             },
             js: {
-                files: 'src/js/**/*.js',
+                files: [
+                    'src/js/**/*.js',
+                    'src/libs/**/*.js'
+                ],
                 tasks: ['concat']
             }
         }
