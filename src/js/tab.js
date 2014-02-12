@@ -29,7 +29,7 @@ Tab.showTime = function () {
                 month = today.getMonthName(),
                 year = today.getFullYear();
             date.className = 'current-date';
-            date.innerHTML = day + ' ' + month + ' ' + year;
+            date.innerHTML = day + ' ' + today.getDate() + ' ' + month + ' ' + year;
             document.getElementsByTagName('body')[0].insertBefore(date);
         };
     

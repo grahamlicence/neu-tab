@@ -1,4 +1,3 @@
-
 // create human readable day and month names
 Date.prototype.getMonthName = function(lang) {
     lang = lang && (lang in Date.locale) ? lang : 'en';

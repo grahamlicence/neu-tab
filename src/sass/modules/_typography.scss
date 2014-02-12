@@ -13,6 +13,10 @@ body {
     color: #E0E0FF;
     text-align: center;
     -webkit-transition: color 0.5s;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
     &.load {
         background: #E0E0FF;
         color: #606090;
