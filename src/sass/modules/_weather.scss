@@ -4,10 +4,19 @@
 
 .forecast {
     list-style: none;
-    margin: 0;
     padding: 0;
+    width: 30em;
+    margin: 0 auto;
+    overflow: hidden;
     li {
         float: left;
         margin-right: 0.5em;
     }
+    p {
+        line-height: 1;
+    }
+}
+
+.weather-now {
+    font-size: 1.5em;
 }
