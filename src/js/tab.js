@@ -57,7 +57,8 @@ Tab.locationData = function () {
 
     function displayWeather (data) {
         if (data === null) {
-            weatherForecast();
+            console.log('New forecast, data null')
+            fetchWeatherForecast();
             return;
         }
         var results = data.query.results.channel,
@@ -83,12 +84,13 @@ Tab.locationData = function () {
         document.getElementsByTagName('body')[0].className = 'load';
     }
 
-    function weatherForecast () {
+    function fetchWeatherForecast () {
         var reqW;
 
         reqW = new XMLHttpRequest;
 
         // possibly use this if switching between temp units
+        // alternatively calculate value in js
         var hasC = '%20AND%20u%3D\'c\'';
         
         reqW.open('GET', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D' + woeid + hasC + '&format=json&diagnostics=true&callback=', true);
@@ -116,7 +118,9 @@ Tab.locationData = function () {
     var lastChecked = parseInt(localStorage.getItem('weatherUpdate'), 10);
     // check weather every two hours
     if (Date.now() - lastChecked > 7200000) {
-        weatherForecast();
+        console.log('New forecast')
+        console.log(Date.now() - lastChecked + '/' + 7200000)
+        fetchWeatherForecast();
     } else {
         displayWeather(JSON.parse(localStorage.getItem('weatherData')));
     }
@@ -141,6 +145,11 @@ Tab.getLocation = function () {
             Tab.locationData();
             return;
         }
+        // debug, log why getting location
+        console.log('New location request')
+        console.log('lat: ' + lat + '/' + position.coords.latitude.toFixed(3))
+        console.log('lon: ' + lon + '/' + position.coords.longitude.toFixed(3))
+        console.log('loc: ' + localStorage.getItem('location'))
         // store current location
         localStorage.setItem('lat', position.coords.latitude);
         localStorage.setItem('lon', position.coords.longitude);
@@ -179,6 +188,8 @@ Tab.getWoeid = function (place) {
     var request, data;
     // get the WOEID needed for yahoo weather lookups
     navigator.geolocation.getCurrentPosition(function(position) {
+
+        console.log('New WOEID request')
 
         request = new XMLHttpRequest;
 

@@ -504,11 +504,12 @@ p {
 /* line 21, ../sass/modules/_weather.scss */
 .weather-now {
   font-size: 1.5em;
+  line-height: 1.2;
 }
 
-/* line 25, ../sass/modules/_weather.scss */
+/* line 26, ../sass/modules/_weather.scss */
 .sunset {
   font-size: 0.8em;
   line-height: 1;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
