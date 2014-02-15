@@ -426,12 +426,19 @@ table {
   font-style: normal;
 }
 
-/* line 7, ../sass/modules/_typography.scss */
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 12, ../sass/modules/_typography.scss */
 html {
   height: 100%;
 }
 
-/* line 10, ../sass/modules/_typography.scss */
+/* line 15, ../sass/modules/_typography.scss */
 body {
   height: 100%;
   background: url(images/loader.gif) no-repeat center #e0e0ff;
@@ -443,18 +450,18 @@ body {
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-/* line 20, ../sass/modules/_typography.scss */
+/* line 25, ../sass/modules/_typography.scss */
 body.load {
   background: #E0E0FF;
   color: #606090;
 }
 
-/* line 26, ../sass/modules/_typography.scss */
+/* line 31, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 30, ../sass/modules/_typography.scss */
+/* line 35, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: istokregular;
@@ -503,13 +510,279 @@ p {
 
 /* line 21, ../sass/modules/_weather.scss */
 .weather-now {
-  font-size: 1.5em;
-  line-height: 1.2;
+  font-size: 3.5em;
+  line-height: 1;
+  position: relative;
+  padding-bottom: 0.3em;
+}
+/* line 26, ../sass/modules/_weather.scss */
+.weather-now .type {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 0.25em;
 }
 
-/* line 26, ../sass/modules/_weather.scss */
+/* line 35, ../sass/modules/_weather.scss */
 .sunset {
   font-size: 0.8em;
   line-height: 1;
   margin-bottom: 1.5em;
+}
+/* line 39, ../sass/modules/_weather.scss */
+.sunset:before {
+  content: "\e600";
+  font-family: "icomoon";
+  display: inline-block;
+  font-size: 50px;
+  margin-right: 0.1em;
+}
+
+/* line 3, ../sass/modules/_weather-icons.scss */
+.icon:before {
+  font-family: "icomoon";
+  display: inline-block;
+  font-size: 50px;
+  margin-right: 0.1em;
+}
+
+/* line 11, ../sass/modules/_weather-icons.scss */
+.icon-0:before {
+  content: "\e605";
+}
+
+/* line 16, ../sass/modules/_weather-icons.scss */
+.icon-1:before {
+  content: "\e605";
+}
+
+/* line 21, ../sass/modules/_weather-icons.scss */
+.icon-2:before {
+  content: "\e605";
+}
+
+/* line 26, ../sass/modules/_weather-icons.scss */
+.icon-3:before {
+  content: "\e60f";
+}
+
+/* line 31, ../sass/modules/_weather-icons.scss */
+.icon-4:before {
+  content: "\e60e";
+}
+
+/* line 36, ../sass/modules/_weather-icons.scss */
+.icon-5:before {
+  content: "\e614";
+}
+
+/* line 41, ../sass/modules/_weather-icons.scss */
+.icon-6:before {
+  content: "\e614";
+}
+
+/* line 46, ../sass/modules/_weather-icons.scss */
+.icon-7:before {
+  content: "\e614";
+}
+
+/* line 51, ../sass/modules/_weather-icons.scss */
+.icon-8:before {
+  content: "\e611";
+}
+
+/* line 56, ../sass/modules/_weather-icons.scss */
+.icon-9:before {
+  content: "\e611";
+}
+
+/* line 61, ../sass/modules/_weather-icons.scss */
+.icon-10:before {
+  content: "\e611";
+}
+
+/* line 66, ../sass/modules/_weather-icons.scss */
+.icon-11:before {
+  content: "\e611";
+}
+
+/* line 71, ../sass/modules/_weather-icons.scss */
+.icon-12:before {
+  content: "\e611";
+}
+
+/* line 76, ../sass/modules/_weather-icons.scss */
+.icon-13:before {
+  content: "\e614";
+}
+
+/* line 81, ../sass/modules/_weather-icons.scss */
+.icon-14:before {
+  content: "\e614";
+}
+
+/* line 86, ../sass/modules/_weather-icons.scss */
+.icon-15:before {
+  content: "\e614";
+}
+
+/* line 91, ../sass/modules/_weather-icons.scss */
+.icon-16:before {
+  content: "\e616";
+}
+
+/* line 96, ../sass/modules/_weather-icons.scss */
+.icon-17:before {
+  content: "\e616";
+}
+
+/* line 101, ../sass/modules/_weather-icons.scss */
+.icon-18:before {
+  content: "\e616";
+}
+
+/* line 106, ../sass/modules/_weather-icons.scss */
+.icon-19:before {
+  content: "\e60d";
+}
+
+/* line 111, ../sass/modules/_weather-icons.scss */
+.icon-20:before {
+  content: "\e60d";
+}
+
+/* line 116, ../sass/modules/_weather-icons.scss */
+.icon-21:before {
+  content: "\e60d";
+}
+
+/* line 121, ../sass/modules/_weather-icons.scss */
+.icon-22:before {
+  content: "\e60d";
+}
+
+/* line 126, ../sass/modules/_weather-icons.scss */
+.icon-23:before {
+  content: "\e612";
+}
+
+/* line 131, ../sass/modules/_weather-icons.scss */
+.icon-24:before {
+  content: "\e612";
+}
+
+/* line 136, ../sass/modules/_weather-icons.scss */
+.icon-25:before {
+  content: "\e615";
+}
+
+/* line 141, ../sass/modules/_weather-icons.scss */
+.icon-26:before {
+  content: "\e60d";
+}
+
+/* line 146, ../sass/modules/_weather-icons.scss */
+.icon-27:before {
+  content: "\e608";
+}
+
+/* line 151, ../sass/modules/_weather-icons.scss */
+.icon-28:before {
+  content: "\e607";
+}
+
+/* line 157, ../sass/modules/_weather-icons.scss */
+.icon-29:before {
+  content: "\e608";
+}
+
+/* line 163, ../sass/modules/_weather-icons.scss */
+.icon-30:before {
+  content: "\e607";
+}
+
+/* line 168, ../sass/modules/_weather-icons.scss */
+.icon-31:before {
+  content: "\e602";
+}
+
+/* line 173, ../sass/modules/_weather-icons.scss */
+.icon-32:before {
+  content: "\e601";
+}
+
+/* line 178, ../sass/modules/_weather-icons.scss */
+.icon-33:before {
+  content: "\e602";
+}
+
+/* line 183, ../sass/modules/_weather-icons.scss */
+.icon-34:before {
+  content: "\e601";
+}
+
+/* line 188, ../sass/modules/_weather-icons.scss */
+.icon-35:before {
+  content: "\e617";
+}
+
+/* line 193, ../sass/modules/_weather-icons.scss */
+.icon-36:before {
+  content: "\e601";
+}
+
+/* line 198, ../sass/modules/_weather-icons.scss */
+.icon-37:before {
+  content: "\e61a";
+}
+
+/* line 203, ../sass/modules/_weather-icons.scss */
+.icon-38:before {
+  content: "\e61a";
+}
+
+/* line 208, ../sass/modules/_weather-icons.scss */
+.icon-39:before {
+  content: "\e61a";
+}
+
+/* line 213, ../sass/modules/_weather-icons.scss */
+.icon-40:before {
+  content: "\e610";
+}
+
+/* line 218, ../sass/modules/_weather-icons.scss */
+.icon-41:before {
+  content: "\e616";
+}
+
+/* line 223, ../sass/modules/_weather-icons.scss */
+.icon-42:before {
+  content: "\e616";
+}
+
+/* line 228, ../sass/modules/_weather-icons.scss */
+.icon-43:before {
+  content: "\e616";
+}
+
+/* line 233, ../sass/modules/_weather-icons.scss */
+.icon-44:before {
+  content: "\e607";
+}
+
+/* line 238, ../sass/modules/_weather-icons.scss */
+.icon-45:before {
+  content: "\e60e";
+}
+
+/* line 243, ../sass/modules/_weather-icons.scss */
+.icon-46:before {
+  content: "\e614";
+}
+
+/* line 248, ../sass/modules/_weather-icons.scss */
+.icon-47:before {
+  content: "\e60e";
 }

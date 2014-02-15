@@ -19,12 +19,28 @@
 }
 
 .weather-now {
-    font-size: 1.5em;
-    line-height: 1.2;
+    font-size: 3.5em;
+    line-height: 1;
+    position: relative;
+    padding-bottom: 0.3em;
+    .type {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        font-size: 0.25em;
+    }
 }
 
 .sunset {
     font-size: 0.8em;
     line-height: 1;
     margin-bottom: 1.5em;
+    &:before {
+        content: "\e600";
+        font-family: "icomoon";
+        display: inline-block;
+        font-size: 50px;
+        margin-right: 0.1em;
+    }
 }

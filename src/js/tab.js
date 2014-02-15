@@ -71,7 +71,8 @@ Tab.locationData = function () {
         weather.className = 'weather-forecast';
         document.getElementsByTagName('body')[0].insertBefore(weather);
         console.log(results)
-        html = '<p class="weather-now">' + results.item.condition.temp + '&deg;' + results.units.temperature + ' ' + results.item.condition.text + '</p>';
+        html = '<p class="weather-now icon icon-' + results.item.condition.code + '">' + results.item.condition.temp + '&deg;' +
+            results.units.temperature + ' <span class="type">' + results.item.condition.text + '</span></p>';
         html += '<p class="wind-speed">Wind speed: ' + kmTpMph(results.wind.speed) + 'mph</p>';
         html += '<p class="sunset">Sunset: ' + results.astronomy.sunset + '</p>';
         html += '<ul class="forecast">';
@@ -121,10 +122,10 @@ Tab.locationData = function () {
     }
 
     var lastChecked = parseInt(localStorage.getItem('weatherUpdate'), 10);
-    // check weather every two hours
-    if (Date.now() - lastChecked > 7200000) {
+    // check weather every hour
+    if (Date.now() - lastChecked > 3600000) {
         console.log('New forecast')
-        console.log(Date.now() - lastChecked + '/' + 7200000)
+        // console.log(Date.now() - lastChecked + '/' + 7200000)
         fetchWeatherForecast();
     } else {
         displayWeather(JSON.parse(localStorage.getItem('weatherData')));
