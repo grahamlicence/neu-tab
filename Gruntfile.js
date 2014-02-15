@@ -50,7 +50,11 @@ module.exports = function(grunt) {
                 // manifest
                 {expand: true, flatten: true, src: 'src/manifest.json', dest: 'build'},
                 // all assets
-                {expand: true, flatten: true, src: ['src/assets/**'], dest: 'build/assets/', filter: 'isFile'}
+                // ideally we'd copy the whole asset folder but exclude src path in build foler
+                // {expand: true, flatten: true, src: 'src/assets/tab.css', dest: 'build/assets'},
+                {expand: true, flatten: true, src: 'src/assets/tab.min.js', dest: 'build/assets'},
+                {expand: true, flatten: true, src: ['src/assets/images/**'], dest: 'build/assets/images', filter: 'isFile'},
+                {expand: true, flatten: true, src: ['src/assets/fonts/**'], dest: 'build/assets/fonts', filter: 'isFile'}
                 ]
             }
         },
@@ -68,6 +72,18 @@ module.exports = function(grunt) {
                 ],
                 dest: 'src/assets/tab.min.js'
             }
+        },
+
+        // minify css
+        cssmin: {
+          add_banner: {
+            options: {
+               banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd HH:MM") %> */\n'
+            },
+            files: {
+              'build/assets/tab.css': ['src/assets/tab.css']
+            }
+          }
         },
 
         watch: {
@@ -94,6 +110,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     /*  The default task runs when you just run `grunt`.
         "js" and "css" tasks process their respective files. 
@@ -102,7 +119,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['uglify']);
 
     // minify and copy files over to production folder
-    grunt.registerTask('release', ['uglify', 'compass', 'copy']);
+    grunt.registerTask('release', ['uglify', 'compass', 'cssmin', 'copy']);
 
     grunt.registerTask('default', ['watch']);
 };
