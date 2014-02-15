@@ -10,11 +10,19 @@
     overflow: hidden;
     li {
         float: left;
-        margin-right: 0.5em;
+        margin-right: 1.5em;
+        &:last-child {
+            margin-right: 0;
+        }
     }
     p {
         line-height: 1;
         font-size: 0.95em;
+    }
+    .icon:before {
+        width: 100%;
+        margin-bottom: 0.2em;
+        margin-right: 0;
     }
 }
 
@@ -40,7 +48,22 @@
         content: "\e600";
         font-family: "icomoon";
         display: inline-block;
-        font-size: 50px;
+        font-size: 20px;
         margin-right: 0.1em;
+        top: 2px;
+        position: relative;
     }
 }
+
+// .wind-speed {
+//     &:before {
+//         content: "\e631";
+//         font-family: "icomoon";
+//         display: inline-block;
+//         font-size: 20px;
+//         margin-right: 0.1em;
+//         top: 2px;
+//         position: relative;
+//         -webkit-transform: rotate(45deg);
+//     }
+// }

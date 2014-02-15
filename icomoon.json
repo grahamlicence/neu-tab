@@ -1,7 +1,7 @@
 {
 	"metadata": {
 		"name": "neu",
-		"lastOpened": 1392485796302,
+		"lastOpened": 1392501176151,
 		"created": 1392485796302
 	},
 	"iconSets": [
@@ -665,7 +665,12 @@
 				},
 				{
 					"id": 164,
-					"order": 0
+					"order": 48,
+					"prevSize": 32,
+					"code": 58927,
+					"name": "map-pin-alt",
+					"tempChar": "",
+					"ligatures": ""
 				},
 				{
 					"id": 165,
@@ -3889,7 +3894,12 @@
 				},
 				{
 					"id": 295,
-					"order": 0
+					"order": 50,
+					"prevSize": 32,
+					"code": 58929,
+					"name": "arrow-up-left",
+					"tempChar": "",
+					"ligatures": ""
 				},
 				{
 					"id": 296,
@@ -4289,7 +4299,12 @@
 				},
 				{
 					"id": 395,
-					"order": 0
+					"order": 49,
+					"prevSize": 32,
+					"code": 58928,
+					"name": "github",
+					"tempChar": "",
+					"ligatures": ""
 				},
 				{
 					"id": 396,

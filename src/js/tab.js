@@ -74,13 +74,16 @@ Tab.locationData = function () {
         html = '<p class="weather-now icon icon-' + results.item.condition.code + '">' + results.item.condition.temp + '&deg;' +
             results.units.temperature + ' <span class="type">' + results.item.condition.text + '</span></p>';
         html += '<p class="wind-speed">Wind speed: ' + kmTpMph(results.wind.speed) + 'mph</p>';
-        html += '<p class="sunset">Sunset: ' + results.astronomy.sunset + '</p>';
+        html += '<p class="sunset">' + results.astronomy.sunset + '</p>';
         html += '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
-        _.each(results.item.forecast, function(day) {
-          html +=   '<li title="' + day.date + '">' +
-                    '<p>' + day.day + '</p>' +
+        _.each(results.item.forecast, function(day, index) {
+            if (index === 0) {
+                return;
+            }
+            html += '<li title="' + day.date + '" class="icon icon-' + day.code + '">' +
+                    '<p><strong>' + day.day + '</strong></p>' +
                     '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
                     '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
                     '<p>' + day.text +'</p>';
