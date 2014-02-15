@@ -55,6 +55,10 @@ Tab.locationData = function () {
         place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
     }
 
+    function kmTpMph (speed) {
+        return Math.round(speed * 0.62137119223733);
+    }
+
     function displayWeather (data) {
         if (data === null) {
             console.log('New forecast, data null')
@@ -68,6 +72,7 @@ Tab.locationData = function () {
         document.getElementsByTagName('body')[0].insertBefore(weather);
         console.log(results)
         html = '<p class="weather-now">' + results.item.condition.temp + '&deg;' + results.units.temperature + ' ' + results.item.condition.text + '</p>';
+        html += '<p class="wind-speed">Wind speed: ' + kmTpMph(results.wind.speed) + 'mph</p>';
         html += '<p class="sunset">Sunset: ' + results.astronomy.sunset + '</p>';
         html += '<ul class="forecast">';
         // show weekly forecast
