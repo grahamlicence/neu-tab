@@ -50,8 +50,7 @@ module.exports = function(grunt) {
                 // manifest
                 {expand: true, flatten: true, src: 'src/manifest.json', dest: 'build'},
                 // all assets
-                // ideally we'd copy the whole asset folder but exclude src path in build foler
-                // {expand: true, flatten: true, src: 'src/assets/tab.css', dest: 'build/assets'},
+                // ideally we'd copy the whole asset folder but exclude src path in build folder
                 {expand: true, flatten: true, src: 'src/assets/tab.min.js', dest: 'build/assets'},
                 {expand: true, flatten: true, src: ['src/assets/images/**'], dest: 'build/assets/images', filter: 'isFile'},
                 {expand: true, flatten: true, src: ['src/assets/fonts/**'], dest: 'build/assets/fonts', filter: 'isFile'}
