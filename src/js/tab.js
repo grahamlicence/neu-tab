@@ -213,10 +213,17 @@ Tab.getWoeid = function (place) {
         request.open('GET', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22' + place + '%22&format=json', true);
 
         request.onload = function() {
-          if (request.status >= 200 && request.status < 400){
+          if (request.status >= 200 && request.status < 400) {
             data = JSON.parse(request.responseText);
-            // console.log(data.query.results.place[0].woeid)
-            localStorage.setItem('woeid', data.query.results.place[0].woeid);
+            console.log(data)
+            var dubs;
+            // sometimes this comes back as an array
+            if (data.query.results.place.woeid) {
+                dubs = data.query.results.place.woeid;
+            } else {
+                dubs = data.query.results.place[0].woeid;                
+            }
+            localStorage.setItem('woeid', dubs);
             // TODO: update weather when location changed
             Tab.locationData();
 
