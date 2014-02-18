@@ -83,6 +83,10 @@ Tab.locationData = function () {
             '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
             '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>' +
             '</div></div>';
+
+        // *********************
+        // wind direction is position from so arrow would point 180 deg from this
+        
         htmlForecast = '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
