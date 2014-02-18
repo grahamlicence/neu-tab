@@ -74,7 +74,7 @@ Tab.locationData = function () {
         html = '<p class="weather-now icon icon-' + results.item.condition.code + '">' + results.item.condition.temp + '&deg;' +
             results.units.temperature + ' <span class="type">' + results.item.condition.text + '</span></p>';
         html += '<p class="wind-speed">Wind speed: ' + kmTpMph(results.wind.speed) + 'mph</p>';
-        html += '<p class="sunset">' + results.astronomy.sunset + '</p>';
+        html += '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>';
         html += '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
