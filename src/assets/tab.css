@@ -543,32 +543,54 @@ strong {
 
 /* line 29, ../sass/modules/_weather.scss */
 .weather-now {
-  font-size: 3.5em;
-  line-height: 1;
   position: relative;
   padding-bottom: 0.3em;
+  padding-right: 7em;
+  display: inline-block;
 }
 /* line 34, ../sass/modules/_weather.scss */
 .weather-now .type {
-  position: absolute;
-  width: 100%;
+  positon: absolute;
   bottom: 0;
   left: 0;
-  font-size: 0.25em;
 }
 
-/* line 43, ../sass/modules/_weather.scss */
+/* line 40, ../sass/modules/_weather.scss */
+.weather-temp {
+  font-size: 3.5em;
+  line-height: 1;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+/* line 46, ../sass/modules/_weather.scss */
+.weather-details {
+  position: absolute;
+  width: 8em;
+  right: 0;
+  top: 1em;
+  text-align: right;
+}
+/* line 53, ../sass/modules/_weather.scss */
+.weather-details .feels-like,
+.weather-details .wind-speed {
+  font-size: 0.8em;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* line 60, ../sass/modules/_weather.scss */
 .sunset {
   font-size: 0.8em;
   line-height: 1;
   margin-bottom: 1.5em;
 }
-/* line 47, ../sass/modules/_weather.scss */
+/* line 64, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
   display: inline-block;
-  font-size: 20px;
+  font-size: 15px;
   margin-right: 0.1em;
   top: 2px;
   position: relative;

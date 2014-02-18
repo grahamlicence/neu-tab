@@ -46,13 +46,15 @@ Tab.locationData = function () {
     var loc = JSON.parse(localStorage.getItem('location')),
         woeid = localStorage.getItem('woeid'),
         place = document.createElement('p'),
-        weather = document.createElement('div');
+        weather = document.createElement('div'),
+        forecast = document.createElement('div');
     console.log(loc);
 
     function locationName () {
         place.className = 'current-location';
         document.getElementsByTagName('body')[0].insertBefore(place);
-        place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
+        // place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
+        place.innerHTML = loc.formatted_address;
     }
 
     function kmTpMph (speed) {
@@ -66,31 +68,39 @@ Tab.locationData = function () {
             return;
         }
         var results = data.query.results.channel,
-            html;
+            bodyTag = document.getElementsByTagName('body')[0],
+            htmlData,
+            htmlForecast;
 
         weather.className = 'weather-forecast';
-        document.getElementsByTagName('body')[0].insertBefore(weather);
+        bodyTag.insertBefore(weather);
         console.log(results)
-        html = '<p class="weather-now icon icon-' + results.item.condition.code + '">' + results.item.condition.temp + '&deg;' +
-            results.units.temperature + ' <span class="type">' + results.item.condition.text + '</span></p>';
-        html += '<p class="wind-speed">Wind speed: ' + kmTpMph(results.wind.speed) + 'mph</p>';
-        html += '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>';
-        html += '<ul class="forecast">';
+        htmlData = '<div class="weather-now icon icon-' + results.item.condition.code + '"><p class="weather-temp">' + results.item.condition.temp + '&deg;' +
+            results.units.temperature + '</p>' +
+            '<p class="type">' + results.item.condition.text + '</p>' +
+            '<div class="weather-details">' +
+            '<p class="wind-speed">Wind: ' + kmTpMph(results.wind.speed) + 'mph</p>' +
+            '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
+            '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>' +
+            '</div></div>';
+        htmlForecast = '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
         _.each(results.item.forecast, function(day, index) {
             if (index === 0) {
                 return;
             }
-            html += '<li title="' + day.date + '" class="icon icon-' + day.code + '">' +
+            htmlForecast += '<li title="' + day.date + '" class="icon icon-' + day.code + '">' +
                     '<p><strong>' + day.day + '</strong></p>' +
                     '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
                     '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
                     '<p>' + day.text +'</p>';
         });
 
-        weather.innerHTML = html;
-        document.getElementsByTagName('body')[0].className = 'load';
+        weather.innerHTML = htmlData;
+        forecast.innerHTML = htmlForecast;
+        bodyTag.insertBefore(forecast);
+        bodyTag.className = 'load';
     }
 
     function fetchWeatherForecast () {
@@ -178,7 +188,7 @@ Tab.getLocation = function () {
           if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
             // find the town name from the post code field and store
-            var town = _.find(data.results, function (ac) { return ac.types[0] == 'postal_code'; });
+            var town = _.find(data.results, function (ac) { return ac.types[0] == 'neighborhood'; });
             localStorage.setItem('location', JSON.stringify(town));
             // get WOEID
             Tab.getWoeid(town.address_components[1].long_name.replace(/ /g, '%20') + '%20' + town.address_components[town.address_components.length - 1].long_name);

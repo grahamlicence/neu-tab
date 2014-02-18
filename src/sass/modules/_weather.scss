@@ -27,16 +27,33 @@
 }
 
 .weather-now {
-    font-size: 3.5em;
-    line-height: 1;
     position: relative;
     padding-bottom: 0.3em;
+    padding-right: 7em;
+    display: inline-block;
     .type {
-        position: absolute;
-        width: 100%;
+        positon: absolute;
         bottom: 0;
         left: 0;
-        font-size: 0.25em;
+    }
+}
+.weather-temp {
+    font-size: 3.5em;
+    line-height: 1;
+    display: inline-block;
+    margin-bottom: 0;
+}
+.weather-details {
+    position: absolute;
+    width: 8em;
+    right: 0;
+    top: 1em;
+    text-align: right;
+    .feels-like,
+    .wind-speed {
+        font-size: 0.8em;
+        margin-bottom: 0;
+        line-height: 1.4;
     }
 }
 
@@ -48,7 +65,7 @@
         content: "\e600";
         font-family: "icomoon";
         display: inline-block;
-        font-size: 20px;
+        font-size: 15px;
         margin-right: 0.1em;
         top: 2px;
         position: relative;
