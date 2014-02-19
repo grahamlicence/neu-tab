@@ -16,6 +16,10 @@ body {
         color: #606090;
     }
 }
+::selection { 
+    background: #606090;
+    color: #E0E0FF;
+}
 
 h1 { 
   font-size: 2em;
