@@ -77,11 +77,11 @@ Tab.locationData = function () {
         console.log(results)
         htmlData = '<div class="weather-now icon icon-' + results.item.condition.code + '"><p class="weather-temp">' + results.item.condition.temp + '&deg;' +
             results.units.temperature + '</p>' +
+            '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
             '<p class="type">' + results.item.condition.text + '</p>' +
             '<div class="weather-details">' +
             '<p class="wind-speed"><i class="wind-speed--icon" style="-webkit-transform: rotate(' + (parseFloat(results.wind.direction) + 180) + 'deg);"></i>' +
             '<span class="wind-speed--value">' + kmTpMph(results.wind.speed) + '</p>' +
-            '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
             '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>' +
             '</div></div>';
 
@@ -258,33 +258,47 @@ Tab.getWoeid = function (place) {
     });
 };
 
+// simple jsonp script
+var jsonp = function (url) {
+    var script = document.createElement('SCRIPT');
+        script.src = url;
+    document.body.appendChild(script);
+};
+
+var callback;
 Tab.getNews = function () {
     var feed = document.createElement('div');
     
-    var request = new XMLHttpRequest;
+    // var request = new XMLHttpRequest;
 
-    request.open('GET', 'http://feeds.bbci.co.uk/news/rss.xml', true);
+    // request.open('GET', 'http://feeds.bbci.co.uk/news/rss.xml', true);
 
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400){
-        // console.log(request.responseText)
-        // return;
-        var data = JSON.parse(request.responseText);
-        console.log(data)
+    // request.onload = function() {
+    //   if (request.status >= 200 && request.status < 400){
+    //     // console.log(request.responseText)
+    //     // return;
+    //     var data = JSON.parse(request.responseText);
+    //     console.log(data)
 
-      } else {
-        // error
-        console.log('error status')
-      }
-    };
+    //   } else {
+    //     // error
+    //     console.log('error status')
+    //   }
+    // };
 
-    request.onerror = function() {
-        console.log('error')
-      // There was a connection error of some sort
-    };
+    // request.onerror = function() {
+    //     console.log('error')
+    //   // There was a connection error of some sort
+    // };
 
-    request.send();
+    // request.send();
 };
+    callback = function (response) {
+        console.log('yup')
+        console.log(response)
+    }
+    // jsonp('//api.ihackernews.com/page?format=jsonp&callback=callback');
+    // jsonp('//feeds.bbci.co.uk/news/rss.xml&callback=callback');
 
 // store current version and update all settings on new release
 Tab.versionUpdate = function () {
