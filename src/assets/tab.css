@@ -566,14 +566,14 @@ strong {
 /* line 46, ../sass/modules/_weather.scss */
 .weather-details {
   position: absolute;
-  width: 8em;
+  width: 6em;
   right: 0;
-  top: 1em;
-  text-align: right;
+  top: 1.1em;
+  text-align: left;
+  padding-top: 2.2em;
 }
 /* line 53, ../sass/modules/_weather.scss */
-.weather-details .feels-like,
-.weather-details .wind-speed {
+.weather-details .feels-like {
   font-size: 0.8em;
   margin-bottom: 0;
   line-height: 1.4;
@@ -594,6 +594,53 @@ strong {
   margin-right: 0.1em;
   top: 2px;
   position: relative;
+}
+
+/* line 75, ../sass/modules/_weather.scss */
+.wind-speed {
+  font-size: 0.8em;
+  line-height: 1.4;
+  border-radius: 25px;
+  background: #fff;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 1em;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 2em;
+  top: 0;
+}
+
+/* line 89, ../sass/modules/_weather.scss */
+.wind-speed--icon {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  width: 20px;
+  height: 20px;
+}
+/* line 96, ../sass/modules/_weather.scss */
+.wind-speed--icon:before {
+  content: "\e631";
+  color: #fff;
+  font-family: "icomoon";
+  display: inline-block;
+  font-size: 20px;
+  margin-right: 0.1em;
+  top: -15px;
+  position: relative;
+  -webkit-transform: rotate(45deg);
+}
+
+/* line 108, ../sass/modules/_weather.scss */
+.wind-speed--value {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  text-align: center;
+  width: 16px;
 }
 
 /* line 4, ../sass/modules/_weather-icons.scss */
