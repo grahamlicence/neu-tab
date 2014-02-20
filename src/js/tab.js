@@ -316,7 +316,7 @@ Tab.getNews = function () {
 
 // store current version and update all settings on new release
 Tab.versionUpdate = function () {
-    var version = '0.1.2';
+    var version = '0.1.3';
         current = localStorage.getItem('version');
     if (current !== version) {
         console.log('New version')
