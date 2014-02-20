@@ -48,7 +48,6 @@ Tab.locationData = function () {
         place = document.createElement('p'),
         weather = document.createElement('div'),
         forecast = document.createElement('div');
-    console.log(loc);
 
     function locationName () {
         place.className = 'current-location';
@@ -77,11 +76,11 @@ Tab.locationData = function () {
         console.log(results)
         htmlData = '<div class="weather-now icon icon-' + results.item.condition.code + '"><p class="weather-temp">' + results.item.condition.temp + '&deg;' +
             results.units.temperature + '</p>' +
-            '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
             '<p class="type">' + results.item.condition.text + '</p>' +
             '<div class="weather-details">' +
             '<p class="wind-speed"><i class="wind-speed--icon" style="-webkit-transform: rotate(' + (parseFloat(results.wind.direction) + 180) + 'deg);"></i>' +
             '<span class="wind-speed--value">' + kmTpMph(results.wind.speed) + '</p>' +
+            '<p class="feels-like">Feels like: ' + results.wind.chill + '&deg;' + results.units.temperature + '</p>' +
             '<p class="sunset" title="sunset time">' + results.astronomy.sunset + '</p>' +
             '</div></div>';
 
@@ -158,6 +157,15 @@ Tab.getLocation = function () {
         // TODO: display message
         return;
     }
+    // error checking
+    if (localStorage.getItem('location') ==='undefined') {
+        localStorage.removeItem('lat');
+        localStorage.removeItem('location');
+        localStorage.removeItem('lon');
+        Tab.getLocation();
+        return;
+    }
+
     var lat = parseFloat(localStorage.getItem('lat')).toFixed(3),
         lon = parseFloat(localStorage.getItem('lon')).toFixed(3),
         request;
@@ -192,11 +200,17 @@ Tab.getLocation = function () {
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
+            console.log(data.results)
             // find the town name from the post code field and store
             var town = _.find(data.results, function (ac) { return ac.types[0] == 'neighborhood'; });
+            if (!town) {
+                town = _.find(data.results, function (ac) { return ac.types[0] == 'postal_code'; });
+                Tab.getWoeid(town.address_components[1].long_name.replace(/ /g, '%20'));
+            } else {
+                Tab.getWoeid(town.address_components[1].long_name.replace(/ /g, '%20') + '%20' + town.address_components[town.address_components.length - 1].long_name);
+            }
             localStorage.setItem('location', JSON.stringify(town));
             // get WOEID
-            Tab.getWoeid(town.address_components[1].long_name.replace(/ /g, '%20') + '%20' + town.address_components[town.address_components.length - 1].long_name);
           } else {
             // error
             console.log('error status')
@@ -265,7 +279,7 @@ var jsonp = function (url) {
     document.body.appendChild(script);
 };
 
-var callback;
+// var callback;
 Tab.getNews = function () {
     var feed = document.createElement('div');
     
@@ -293,10 +307,10 @@ Tab.getNews = function () {
 
     // request.send();
 };
-    callback = function (response) {
-        console.log('yup')
-        console.log(response)
-    }
+    // var callback = function (response) {
+    //     console.log('yup')
+    //     console.log(response)
+    // }
     // jsonp('//api.ihackernews.com/page?format=jsonp&callback=callback');
     // jsonp('//feeds.bbci.co.uk/news/rss.xml&callback=callback');
 
