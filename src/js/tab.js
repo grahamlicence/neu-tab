@@ -46,8 +46,10 @@ Tab.locationData = function () {
     var loc = JSON.parse(localStorage.getItem('location')),
         woeid = localStorage.getItem('woeid'),
         place = document.createElement('p'),
+        bodyTag = document.getElementsByTagName('body')[0],
         weather = document.createElement('div'),
         forecast = document.createElement('div');
+
 
     function locationName () {
         place.className = 'current-location';
@@ -67,7 +69,6 @@ Tab.locationData = function () {
             return;
         }
         var results = data.query.results.channel,
-            bodyTag = document.getElementsByTagName('body')[0],
             htmlData,
             htmlForecast;
 
@@ -155,6 +156,11 @@ Tab.getLocation = function () {
     "use strict";
     if ('geolocation' in navigator === false) {
         // TODO: display message
+        return;
+    }
+    // check if online
+    if (!isOnline()) {
+        document.getElementsByTagName('body')[0].className = 'load';
         return;
     }
     // error checking
@@ -338,3 +344,22 @@ Tab.init();
 
 // news feeds view-source:http://www.richmondandtwickenhamtimes.co.uk/news/rss/
 // http://feeds.bbci.co.uk/news/rss.xml
+
+function isOnline () {
+
+  // Handle IE and more capable browsers
+  var xhr = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" );
+  var status;
+
+  // Open new request as a HEAD to the root hostname with a random param to bust the cache
+  xhr.open( "HEAD", "//maps.googleapis.com/maps/api/geocode/json?rand=" + Math.floor((1 + Math.random()) * 0x10000), false );
+
+  // Issue request and handle response
+  try {
+    xhr.send();
+    return ( xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 );
+  } catch (error) {
+    return false;
+  }
+
+};
