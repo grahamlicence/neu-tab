@@ -159,12 +159,13 @@ Tab.getLocation = function () {
         return;
     }
     // check if online
-    if (!isOnline()) {
+    if (!navigator.onLine) {
         document.getElementsByTagName('body')[0].className = 'load';
+        console.log('No connection');
         return;
     }
     // error checking
-    if (localStorage.getItem('location') ==='undefined') {
+    if (localStorage.getItem('location') === 'undefined') {
         localStorage.removeItem('lat');
         localStorage.removeItem('location');
         localStorage.removeItem('lon');
@@ -181,7 +182,6 @@ Tab.getLocation = function () {
             high = num + 0.002;
         return match > low && match < high;
     }
-
     navigator.geolocation.getCurrentPosition(function(position) {
         // check if still in same location and have location details
         // using toFixed as specifity of values changes
@@ -224,7 +224,9 @@ Tab.getLocation = function () {
         };
 
         request.onerror = function() {
-            console.log('error')
+            console.log('error');
+            document.getElementsByTagName('body')[0].className = 'load';
+            // TODO: show error message
           // There was a connection error of some sort
         };
 
