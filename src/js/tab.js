@@ -73,7 +73,6 @@ Tab.locationData = function () {
             htmlForecast;
 
         weather.className = 'weather-forecast';
-        bodyTag.insertBefore(weather);
         console.log(results)
         htmlData = '<div class="weather-now icon icon-' + results.item.condition.code + '"><p class="weather-temp">' + results.item.condition.temp + '&deg;' +
             results.units.temperature + '</p>' +
@@ -104,7 +103,6 @@ Tab.locationData = function () {
 
         weather.innerHTML = htmlData;
         forecast.innerHTML = htmlForecast;
-        bodyTag.insertBefore(forecast);
         bodyTag.className = 'load';
     }
 
@@ -148,6 +146,8 @@ Tab.locationData = function () {
     } else {
         displayWeather(JSON.parse(localStorage.getItem('weatherData')));
     }
+    bodyTag.insertBefore(weather);
+    bodyTag.insertBefore(forecast);
     locationName();
 
 };
