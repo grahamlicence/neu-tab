@@ -133,6 +133,10 @@ Tab.locationData = function () {
             console.log('connection error')
         };
 
+        reqW.ontimeout = function () {
+            console.log('timeout')
+        };
+
         reqW.send();
             
     }
@@ -234,7 +238,19 @@ Tab.getLocation = function () {
 
         // TODO: just use yahoo??
         //http://where.yahooapis.com/geocode?location=37.42,-122.12&flags=J&gflags=R&appid=zHgnBS4m
-    });
+    }, 
+    // check if connected to internet
+    function (error) {
+        console.log('Failed to get location')
+        var p = document.createElement('p'),
+        bodyTag = document.getElementsByTagName('body')[0];
+        p.className = 'error-message';
+        p.innerText = 'Unable to connect to internet or get location';
+        bodyTag.insertBefore(p);
+        bodyTag.className = 'load';
+    },
+    // change default timeout for location to 3 seconds
+    {timeout: 3000});
 };
 
 Tab.getWoeid = function (place) {
@@ -346,3 +362,5 @@ Tab.init();
 
 // news feeds view-source:http://www.richmondandtwickenhamtimes.co.uk/news/rss/
 // http://feeds.bbci.co.uk/news/rss.xml
+
+

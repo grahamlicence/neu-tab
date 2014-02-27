@@ -489,6 +489,11 @@ strong {
   font-family: istokbold;
 }
 
+/* line 42, ../sass/modules/_typography.scss */
+.error-message {
+  font-size: 0.85em;
+}
+
 /* line 1, ../sass/modules/_time.scss */
 .current-time {
   font-size: 4em;
