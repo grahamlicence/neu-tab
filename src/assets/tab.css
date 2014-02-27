@@ -465,18 +465,18 @@ body.load {
   opacity: 1;
 }
 
-/* line 23, ../sass/modules/_typography.scss */
+/* line 24, ../sass/modules/_typography.scss */
 ::selection {
   background: #606090;
   color: #E0E0FF;
 }
 
-/* line 28, ../sass/modules/_typography.scss */
+/* line 29, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 32, ../sass/modules/_typography.scss */
+/* line 33, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: istokregular;
@@ -484,12 +484,12 @@ p {
   line-height: 2;
 }
 
-/* line 38, ../sass/modules/_typography.scss */
+/* line 39, ../sass/modules/_typography.scss */
 strong {
   font-family: istokbold;
 }
 
-/* line 42, ../sass/modules/_typography.scss */
+/* line 43, ../sass/modules/_typography.scss */
 .error-message {
   font-size: 0.85em;
 }
