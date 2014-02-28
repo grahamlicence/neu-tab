@@ -30,6 +30,13 @@
         margin-right: 0;
     }
 }
+@media only screen and (max-width: 480px) {
+    .forecast {
+        li {
+            width: 19%;
+        }
+    }
+}
 
 .weather-now {
     position: relative;
