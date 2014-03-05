@@ -600,24 +600,44 @@ strong {
 }
 
 /* line 73, ../sass/modules/_weather.scss */
-.sunset {
+.todays-temp {
+  line-height: 1;
+  font-size: 0.8em;
+  padding-top: 0.11em;
+}
+
+/* line 79, ../sass/modules/_weather.scss */
+.sun-times, .sunrise, .sunset {
   font-size: 0.8em;
   line-height: 1;
-  margin-bottom: 1.5em;
   text-align: center;
+  padding-left: 1.2em;
 }
-/* line 78, ../sass/modules/_weather.scss */
+
+/* line 85, ../sass/modules/_weather.scss */
+.sunrise {
+  margin-bottom: 0.1em;
+  margin-top: 0.5em;
+}
+
+/* line 90, ../sass/modules/_weather.scss */
+.sunset {
+  margin-bottom: 0.5em;
+  position: relative;
+}
+/* line 94, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
   display: inline-block;
-  font-size: 15px;
+  font-size: 30px;
   margin-right: 0.1em;
-  top: 2px;
-  position: relative;
+  top: -17px;
+  position: absolute;
+  left: 0;
 }
 
-/* line 89, ../sass/modules/_weather.scss */
+/* line 106, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -632,7 +652,7 @@ strong {
   top: 0;
 }
 
-/* line 102, ../sass/modules/_weather.scss */
+/* line 119, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -641,7 +661,7 @@ strong {
   width: 25px;
   height: 25px;
 }
-/* line 109, ../sass/modules/_weather.scss */
+/* line 126, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #fff;
@@ -654,7 +674,7 @@ strong {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 121, ../sass/modules/_weather.scss */
+/* line 138, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;

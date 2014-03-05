@@ -70,19 +70,36 @@
     margin-bottom: 0;
 }
 
-.sunset {
+.todays-temp {
+    line-height: 1;
+    font-size: 0.8em;
+    padding-top: 0.11em;
+}
+
+.sun-times {
     font-size: 0.8em;
     line-height: 1;
-    margin-bottom: 1.5em;
     text-align: center;
+    padding-left: 1.2em;
+}
+.sunrise {
+    @extend .sun-times;
+    margin-bottom: 0.1em;
+    margin-top: 0.5em;
+}
+.sunset {
+    @extend .sun-times;
+    margin-bottom: 0.5em;
+    position: relative;
     &:before {
         content: "\e600";
         font-family: "icomoon";
         display: inline-block;
-        font-size: 15px;
+        font-size: 30px;
         margin-right: 0.1em;
-        top: 2px;
-        position: relative;
+        top: -17px;
+        position: absolute;
+        left: 0;
     }
 }
 
