@@ -41,7 +41,7 @@ Tab.showTime = function () {
     showDay();
 };
 
-Tab.locationData = function () {
+Tab.locationData = function (usingPrevious) {
     "use strict";
     var loc = JSON.parse(localStorage.getItem('location')),
         woeid = localStorage.getItem('woeid'),
@@ -55,8 +55,15 @@ Tab.locationData = function () {
         place.className = 'current-location';
         document.getElementsByTagName('body')[0].insertBefore(place);
         // place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
-        place.innerHTML = loc.formatted_address;
+        // check for errors and using previous manual location
+        if (usingPrevious) {
+            place.innerHTML = loc.formatted_address + '<br>Using last known position';
+            // TODO: add change location here
+        } else {
+            place.innerHTML = loc.formatted_address;
+        }
     }
+            
 
     // convert km to mph
     function kmTpMph (speed) {
@@ -255,13 +262,47 @@ Tab.getLocation = function () {
     }, 
     // check if connected to internet
     function (error) {
+        // console.log(error)
+        // ooh interesting error here, seems Chrome location only works on wifi devices
+        // https://code.google.com/p/chromium/issues/detail?id=41001
         console.log('Failed to get location')
+        // check if previous location added
+        if (localStorage.getItem('location')) {
+            Tab.locationData(true);
+            return;
+        }
         var p = document.createElement('p'),
-        bodyTag = document.getElementsByTagName('body')[0];
+            inp = document.createElement('input'),
+            btn = document.createElement('button'),
+            bodyTag = document.getElementsByTagName('body')[0],
+            manualData;
+        
         p.className = 'error-message';
-        p.innerText = 'Unable to connect to internet or get location';
+        inp.type = 'text';
+        btn.innerText = 'Enter';
+        inp.placeholder = 'Search'
+        
+        if (navigator.onLine) {
+            p.innerText = 'Unable to get location';
+        } else {
+            p.innerText = 'Unable to connect to internet or get location';
+        }
         bodyTag.insertBefore(p);
+        bodyTag.insertBefore(inp);
+        bodyTag.insertBefore(btn);
         bodyTag.className = 'load';
+
+        // TODO: remove find into new function
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            console.log(inp.value);
+                console.log(inp.value.length)
+            if (inp.value.length) {
+                manualData = { "formatted_address" : inp.value }
+                localStorage.setItem('location', JSON.stringify(manualData));
+                Tab.getWoeid(inp.value.replace(/ /g, '%20'));
+            }
+        });
     },
     // change default timeout for location to 3 seconds
     {timeout: 3000});
@@ -271,7 +312,9 @@ Tab.getWoeid = function (place) {
     "use strict";
     var request, data;
     // get the WOEID needed for yahoo weather lookups
-    navigator.geolocation.getCurrentPosition(function(position) {
+
+    // is this line needed?
+    // navigator.geolocation.getCurrentPosition(function(position) {
 
         console.log('New WOEID request')
 
@@ -307,7 +350,7 @@ Tab.getWoeid = function (place) {
 
         request.send();
         
-    });
+    // });
 };
 
 // simple jsonp script
@@ -316,41 +359,6 @@ var jsonp = function (url) {
         script.src = url;
     document.body.appendChild(script);
 };
-
-// var callback;
-Tab.getNews = function () {
-    var feed = document.createElement('div');
-    
-    // var request = new XMLHttpRequest;
-
-    // request.open('GET', 'http://feeds.bbci.co.uk/news/rss.xml', true);
-
-    // request.onload = function() {
-    //   if (request.status >= 200 && request.status < 400){
-    //     // console.log(request.responseText)
-    //     // return;
-    //     var data = JSON.parse(request.responseText);
-    //     console.log(data)
-
-    //   } else {
-    //     // error
-    //     console.log('error status')
-    //   }
-    // };
-
-    // request.onerror = function() {
-    //     console.log('error')
-    //   // There was a connection error of some sort
-    // };
-
-    // request.send();
-};
-    // var callback = function (response) {
-    //     console.log('yup')
-    //     console.log(response)
-    // }
-    // jsonp('//api.ihackernews.com/page?format=jsonp&callback=callback');
-    // jsonp('//feeds.bbci.co.uk/news/rss.xml&callback=callback');
 
 // store current version and update all settings on new release
 Tab.versionUpdate = function () {
@@ -368,7 +376,6 @@ Tab.init = function  () {
     Tab.versionUpdate();
     Tab.showTime();
     Tab.getLocation();
-    // Tab.getNews();
 };
 
 Tab.init();
