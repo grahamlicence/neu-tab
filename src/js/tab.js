@@ -41,14 +41,31 @@ Tab.showTime = function () {
     showDay();
 };
 
+Tab.removeOldData = function () {
+    var weather = document.getElementsByClassName('weather-wrapper'),
+        location = document.getElementsByClassName('current-location'),
+        changeForm = document.getElementsByClassName('change-wrapper');
+    if (weather.length) {
+        weather[0].remove();
+        location[0].remove();
+    }
+    if (changeForm.length) {
+        changeForm[0].remove();
+    }
+};
+
 Tab.locationData = function (usingPrevious) {
     "use strict";
+    // remove any previous data
+    Tab.removeOldData();
     var loc = JSON.parse(localStorage.getItem('location')),
         woeid = localStorage.getItem('woeid'),
         place = document.createElement('p'),
         bodyTag = document.getElementsByTagName('body')[0],
         weather = document.createElement('div'),
-        forecast = document.createElement('div');
+        forecast = document.createElement('div'),
+        wrapper = document.createElement('div'),
+        changeLink = document.createElement('a');
 
     // display the name of our current location
     function locationName () {
@@ -57,7 +74,17 @@ Tab.locationData = function (usingPrevious) {
         // place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
         // check for errors and using previous manual location
         if (usingPrevious) {
-            place.innerHTML = loc.formatted_address + '<br>Using last known position';
+            changeLink.innerText = 'change';
+            changeLink.href = '#';
+            changeLink.className = 'last-known';
+            changeLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                Tab.changeLocation();
+            });
+            place.innerHTML = loc.formatted_address +
+                '<br><span class="last-known">Using last known location</span> ';
+            place.insertBefore(changeLink);
+            console.log(changeLink)
             // TODO: add change location here
         } else {
             place.innerHTML = loc.formatted_address;
@@ -171,8 +198,11 @@ Tab.locationData = function (usingPrevious) {
     } else {
         displayWeather(JSON.parse(localStorage.getItem('weatherData')));
     }
-    bodyTag.insertBefore(weather);
-    bodyTag.insertBefore(forecast);
+    // add content to page
+    wrapper.className = 'weather-wrapper';
+    bodyTag.insertBefore(wrapper);
+    wrapper.insertBefore(weather);
+    wrapper.insertBefore(forecast);
     locationName();
 
 };
@@ -272,40 +302,55 @@ Tab.getLocation = function () {
             return;
         }
         var p = document.createElement('p'),
-            inp = document.createElement('input'),
-            btn = document.createElement('button'),
-            bodyTag = document.getElementsByTagName('body')[0],
-            manualData;
+            bodyTag = document.getElementsByTagName('body')[0];
         
         p.className = 'error-message';
-        inp.type = 'text';
-        btn.innerText = 'Enter';
-        inp.placeholder = 'Search'
+        bodyTag.insertBefore(p);
         
         if (navigator.onLine) {
             p.innerText = 'Unable to get location';
+            Tab.changeLocation();
         } else {
             p.innerText = 'Unable to connect to internet or get location';
         }
-        bodyTag.insertBefore(p);
-        bodyTag.insertBefore(inp);
-        bodyTag.insertBefore(btn);
         bodyTag.className = 'load';
-
-        // TODO: remove find into new function
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            console.log(inp.value);
-                console.log(inp.value.length)
-            if (inp.value.length) {
-                manualData = { "formatted_address" : inp.value }
-                localStorage.setItem('location', JSON.stringify(manualData));
-                Tab.getWoeid(inp.value.replace(/ /g, '%20'));
-            }
-        });
     },
     // change default timeout for location to 3 seconds
     {timeout: 3000});
+};
+
+// add form to change location
+Tab.changeLocation = function () {      
+    var label = document.createElement('label'),
+        changeDiv = document.createElement('div'),
+        input = document.createElement('input'),
+        btn = document.createElement('button'),
+        bodyTag = document.getElementsByTagName('body')[0],
+        manualData;
+
+    changeDiv.className = 'change-wrapper';
+    input.type = 'text';
+    input.id = 'location';
+    label.htmlFor = 'location';
+    label.innerText = 'Set location';
+    label.className = 'change-location';
+    btn.innerText = 'Enter';
+    input.placeholder = 'eg London';
+    bodyTag.insertBefore(changeDiv);
+    changeDiv.insertBefore(label);
+    changeDiv.insertBefore(input);
+    changeDiv.insertBefore(btn);
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log(input.value);
+            console.log(input.value.length)
+        if (input.value.length) {
+            manualData = { "formatted_address" : input.value }
+            localStorage.setItem('location', JSON.stringify(manualData));
+            Tab.getWoeid(input.value.replace(/ /g, '%20'));
+        }
+    });
 };
 
 Tab.getWoeid = function (place) {

@@ -494,6 +494,19 @@ strong {
   font-size: 0.85em;
 }
 
+/* line 47, ../sass/modules/_typography.scss */
+.change-location {
+  display: block;
+  font-size: 0.8em;
+  text-align: left;
+  width: 232px;
+}
+
+/* line 54, ../sass/modules/_typography.scss */
+.last-known {
+  font-size: 0.8em;
+}
+
 /* line 1, ../sass/modules/_time.scss */
 .current-time {
   font-size: 4em;
