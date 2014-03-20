@@ -1,10 +1,4 @@
 .weather-forecast {
-    // -webkit-transition: opacity 0.5s ease;
-    // -webkit-transition-delay: 1s;
-    // opacity: 0;
-    // .load & {
-    //     opacity: 1;
-    // }
 }
 
 .forecast {
@@ -12,7 +6,7 @@
     padding: 0;
     display: inline-block;
     margin: 0 auto;
-    overflow: hidden;
+    // overflow: hidden;
     li {
         float: left;
         margin-right: 1.5em;
@@ -24,10 +18,24 @@
         line-height: 1;
         font-size: 0.95em;
     }
-    .icon:before {
-        width: 100%;
-        margin-bottom: 0.2em;
-        margin-right: 0;
+    // animate in the weekly forecast
+    .icon {
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0, 1.2, 1, 1.2);
+        -webkit-transform: scale(0.1);
+                transform: scale(0.1);
+        &.shown {
+            opacity: 1;
+            -webkit-transform-origin: 50% 50%;
+                    transform-origin: 50% 50%;
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+        }
+        &:before {
+            width: 100%;
+            margin-bottom: 0.2em;
+            margin-right: 0;
+        }
     }
 }
 @media only screen and (max-width: 480px) {

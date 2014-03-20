@@ -115,7 +115,8 @@ Tab.locationData = function (usingPrevious) {
         var results = data.query.results.channel,
             htmlData,
             temp = results.units.temperature,
-            htmlForecast;
+            htmlForecast = document.createElement('ul'),
+            forcastItem;
 
         weather.className = 'weather-forecast';
         console.log(results)
@@ -135,22 +136,37 @@ Tab.locationData = function (usingPrevious) {
         // *********************
         // wind direction is position from so arrow would point 180 deg from this
         
-        htmlForecast = '<ul class="forecast">';
         // show weekly forecast
         // weather codes http://developer.yahoo.com/weather/#codes
+        htmlForecast.className = 'forecast';
+
+        forecast.appendChild(htmlForecast);
         _.each(results.item.forecast, function(day, index) {
             if (index === 0) {
                 return;
             }
-            htmlForecast += '<li title="' + day.date + '" class="icon icon-' + day.code + '">' +
-                    '<p><strong>' + day.day + '</strong></p>' +
+            forcastItem = document.createElement('li')
+            forcastItem.title = day.date;
+            forcastItem.className = 'icon icon-' + day.code;
+
+            forcastItem.innerHTML = '<p><strong>' + day.day + '</strong></p>' +
                     '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
                     '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
                     '<p>' + day.text +'</p>';
+
+            htmlForecast.appendChild(forcastItem);
+            
+            // animate in the item
+            function shown (el) {
+                console.log(el)
+                setTimeout(function () {
+                    el.className += ' shown';
+                }, 75 * index);
+            }
+            shown(forcastItem);
         });
 
         weather.innerHTML = htmlData;
-        forecast.innerHTML = htmlForecast;
         bodyTag.className = 'load';
     }
 

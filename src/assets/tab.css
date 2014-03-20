@@ -538,29 +538,43 @@ strong {
   position: relative;
 }
 
-/* line 10, ../sass/modules/_weather.scss */
+/* line 4, ../sass/modules/_weather.scss */
 .forecast {
   list-style: none;
   padding: 0;
   display: inline-block;
   margin: 0 auto;
-  overflow: hidden;
 }
-/* line 16, ../sass/modules/_weather.scss */
+/* line 10, ../sass/modules/_weather.scss */
 .forecast li {
   float: left;
   margin-right: 1.5em;
 }
-/* line 19, ../sass/modules/_weather.scss */
+/* line 13, ../sass/modules/_weather.scss */
 .forecast li:last-child {
   margin-right: 0;
 }
-/* line 23, ../sass/modules/_weather.scss */
+/* line 17, ../sass/modules/_weather.scss */
 .forecast p {
   line-height: 1;
   font-size: 0.95em;
 }
+/* line 22, ../sass/modules/_weather.scss */
+.forecast .icon {
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0, 1.2, 1, 1.2);
+  -webkit-transform: scale(0.1);
+  transform: scale(0.1);
+}
 /* line 27, ../sass/modules/_weather.scss */
+.forecast .icon.shown {
+  opacity: 1;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+/* line 34, ../sass/modules/_weather.scss */
 .forecast .icon:before {
   width: 100%;
   margin-bottom: 0.2em;
@@ -568,26 +582,26 @@ strong {
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 35, ../sass/modules/_weather.scss */
+  /* line 43, ../sass/modules/_weather.scss */
   .forecast li {
     width: 19%;
   }
 }
-/* line 41, ../sass/modules/_weather.scss */
+/* line 49, ../sass/modules/_weather.scss */
 .weather-now {
   position: relative;
   padding-bottom: 0.3em;
   padding-right: 7em;
   display: inline-block;
 }
-/* line 46, ../sass/modules/_weather.scss */
+/* line 54, ../sass/modules/_weather.scss */
 .weather-now .type {
   positon: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* line 52, ../sass/modules/_weather.scss */
+/* line 60, ../sass/modules/_weather.scss */
 .weather-temp {
   font-size: 3.5em;
   line-height: 1;
@@ -595,7 +609,7 @@ strong {
   margin-bottom: 0;
 }
 
-/* line 58, ../sass/modules/_weather.scss */
+/* line 66, ../sass/modules/_weather.scss */
 .weather-details {
   position: absolute;
   width: 6em;
@@ -605,21 +619,21 @@ strong {
   padding-top: 2.8em;
 }
 
-/* line 67, ../sass/modules/_weather.scss */
+/* line 75, ../sass/modules/_weather.scss */
 .feels-like {
   font-size: 0.8em;
   line-height: 1;
   margin-bottom: 0;
 }
 
-/* line 73, ../sass/modules/_weather.scss */
+/* line 81, ../sass/modules/_weather.scss */
 .todays-temp {
   line-height: 1;
   font-size: 0.8em;
   padding-top: 0.11em;
 }
 
-/* line 79, ../sass/modules/_weather.scss */
+/* line 87, ../sass/modules/_weather.scss */
 .sun-times, .sunrise, .sunset {
   font-size: 0.8em;
   line-height: 1;
@@ -627,18 +641,18 @@ strong {
   padding-left: 1.2em;
 }
 
-/* line 85, ../sass/modules/_weather.scss */
+/* line 93, ../sass/modules/_weather.scss */
 .sunrise {
   margin-bottom: 0.1em;
   margin-top: 0.5em;
 }
 
-/* line 90, ../sass/modules/_weather.scss */
+/* line 98, ../sass/modules/_weather.scss */
 .sunset {
   margin-bottom: 0.5em;
   position: relative;
 }
-/* line 94, ../sass/modules/_weather.scss */
+/* line 102, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
@@ -650,7 +664,7 @@ strong {
   left: 0;
 }
 
-/* line 106, ../sass/modules/_weather.scss */
+/* line 114, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -665,7 +679,7 @@ strong {
   top: 0;
 }
 
-/* line 119, ../sass/modules/_weather.scss */
+/* line 127, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -674,7 +688,7 @@ strong {
   width: 25px;
   height: 25px;
 }
-/* line 126, ../sass/modules/_weather.scss */
+/* line 134, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #fff;
@@ -687,7 +701,7 @@ strong {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 138, ../sass/modules/_weather.scss */
+/* line 146, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;
