@@ -3,9 +3,9 @@ html {
 }
 body {
     height: 100%;
-    background: url(images/loader.gif) no-repeat center #F1F3F4;
-    // color: #F1F3F4;
-    color: #606090;
+    background: url(images/loader.gif) no-repeat center $background;
+    // color: $background;
+    color: $defaultcolour;
     text-align: center;
     -webkit-transition: color 0.5s;
     -webkit-transition: opacity 0.5s ease;
@@ -15,15 +15,15 @@ body {
     -webkit-box-pack: center;
     -webkit-box-align: center;
     &.load {
-        background: #F1F3F4;
-        // color: #606090;
+        background: $background;
+        // color: $defaultcolour;
         opacity: 1;
     }
 }
 
 ::selection { 
-    background: #F1F3F4;
-    color: #606090;
+    background: $background;
+    color: $defaultcolour;
 }   
 
 h1 { 
