@@ -26,16 +26,17 @@
 // clock
 
 .clock {
-  width: 32px;
-  height: 32px;
-  fill: $defaultcolour;
+    width: 32px;
+    height: 32px;
+    fill: $defaultcolour;
 }
-
-// .clock.is-check{
-//   fill: #FE4365;
-// }
-
 .clock.is-x10 {
-  width: 250px;
-  height: 250px;
+    width: 200px;
+    height: 200px;
+}
+@media only screen and (min-height: 600px) {
+    .clock.is-x10 {
+        width: 250px;
+        height: 250px;
+    }
 }

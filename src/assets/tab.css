@@ -545,12 +545,19 @@ strong {
   fill: #606090;
 }
 
-/* line 38, ../sass/modules/_time.scss */
+/* line 33, ../sass/modules/_time.scss */
 .clock.is-x10 {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
+@media only screen and (min-height: 600px) {
+  /* line 38, ../sass/modules/_time.scss */
+  .clock.is-x10 {
+    width: 250px;
+    height: 250px;
+  }
+}
 /* line 4, ../sass/modules/_weather.scss */
 .forecast {
   list-style: none;

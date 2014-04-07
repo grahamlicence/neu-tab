@@ -15,7 +15,11 @@ Tab.showTime = function () {
                 { id: 'minute-hand',x: 15.65,y: 6.2,width: 0.7,height: 11.439 },
                 { id: 'second-hand',x: 15.88,y: 7.46,width: 0.24,height: 9.83 }
             ],
-            els = [];
+            els = [],
+            markers = document.createElementNS("http://www.w3.org/2000/svg", 'g'),
+            lines = [
+                { x: 10, y: 10 }
+            ];
 
         _.each(hands, function (hand) {
             var rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
@@ -28,8 +32,20 @@ Tab.showTime = function () {
             group.appendChild(rect);
         });
 
+        _.each(lines, function (pos) {
+            var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', pos.x);
+            line.setAttribute('y1', pos.y);
+            line.setAttribute('x2', pos.x);
+            line.setAttribute('y2', 0);
+            line.setAttribute('width', 1.7);
+            line.setAttribute('height', 10);
+            markers.appendChild(line);
+        });
+
         group.id = 'clock-icon';
         clock.appendChild(group);
+        clock.appendChild(markers);
         clock.setAttribute('viewBox', '0 0 32 32');
         clock.setAttribute('class', 'clock is-x10');
         bodyTag.insertBefore(clock);
@@ -78,13 +94,13 @@ Tab.showTime = function () {
         date.innerHTML = day + ' ' + today.getDate() + ' ' + month + ' ' + year;
         document.getElementsByTagName('body')[0].insertBefore(date);
     }
-    makeClock();
+    // makeClock();
     // just showing one clock
     // TODO: switch between the two
-    // time.className = 'current-time';
-    // bodyTag.insertBefore(time);
-    // setInterval(updateClock, 500);
-    // updateClock();
+    time.className = 'current-time';
+    bodyTag.insertBefore(time);
+    setInterval(updateClock, 500);
+    updateClock();
 
     // show day
     showDay();
