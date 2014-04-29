@@ -36,6 +36,13 @@ p {
     margin: 0 0 0.3em;
     line-height: 2;
 }
+a {
+    color: $linkcolour;
+    &:hover,
+    &:focus {
+        color: $linkhover;
+    }
+}
 strong {
     font-family: istokbold;
 }
