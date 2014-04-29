@@ -977,3 +977,16 @@ strong {
 .icon-47:before {
   content: "\e60e";
 }
+
+/* line 1, ../sass/modules/_bookmarks.scss */
+.bookmarks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* line 8, ../sass/modules/_bookmarks.scss */
+body.load {
+  opacity: 0.3;
+}

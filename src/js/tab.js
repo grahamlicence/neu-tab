@@ -479,6 +479,52 @@ Tab.getWoeid = function (place) {
     // });
 };
 
+Tab.books = function (books) {
+    // console.log(books[0].children[0].children);
+    // console.log(books[0].children[0]);
+    // books[0].children[0] bookmarks bar
+    // books[0].children[1] other bookmarks
+    // books[0].children[2] mobile bookmarks
+    var bookmarksHtml = document.createElement('div'),
+        bodyTag = document.getElementsByTagName('body')[0],
+        listHtml = document.createElement('ul');
+
+    _.each(books[0].children[0].children, function (book) {
+        if (book.index > 5) { //only use the first 5 for now
+            return;
+        } else {
+            console.log(book);
+            var item = document.createElement('li'),
+                el = document.createElement('a'),
+                list = document.createElement('ul');
+
+            item.appendChild(el);
+            if (book.url) {
+                el.href = book.url;
+            } else {
+                item.appendChild(list);
+                _.each(book.children, function (subBook) {
+                    var subListItem = document.createElement('li'),
+                        subListLink = document.createElement('a');
+                    subListLink.href = subBook.url;
+                    subListLink.innerText = subBook.title;
+
+                    subListItem.appendChild(subListLink);
+                    list.appendChild(subListItem);
+                });
+                // el = document.createElement('p');
+                // list heading
+            }
+            el.innerText = book.title;
+            listHtml.appendChild(item);
+        }
+    });
+
+    bookmarksHtml.className = 'bookmarks';
+    bookmarksHtml.appendChild(listHtml);
+    bodyTag.appendChild(bookmarksHtml);
+};
+
 // simple jsonp script
 var jsonp = function (url) {
     var script = document.createElement('SCRIPT');
@@ -502,6 +548,7 @@ Tab.init = function  () {
     Tab.versionUpdate();
     Tab.showTime();
     Tab.getLocation();
+    chrome.bookmarks.getTree(Tab.books);
 };
 
 Tab.init();
