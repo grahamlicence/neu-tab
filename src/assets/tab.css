@@ -485,16 +485,25 @@ p {
 }
 
 /* line 39, ../sass/modules/_typography.scss */
+a {
+  color: #606090;
+}
+/* line 42, ../sass/modules/_typography.scss */
+a:hover, a:focus {
+  color: #48486c;
+}
+
+/* line 46, ../sass/modules/_typography.scss */
 strong {
   font-family: istokbold;
 }
 
-/* line 43, ../sass/modules/_typography.scss */
+/* line 50, ../sass/modules/_typography.scss */
 .error-message {
   font-size: 0.85em;
 }
 
-/* line 47, ../sass/modules/_typography.scss */
+/* line 54, ../sass/modules/_typography.scss */
 .change-location {
   display: block;
   font-size: 0.8em;
@@ -502,7 +511,7 @@ strong {
   width: 232px;
 }
 
-/* line 54, ../sass/modules/_typography.scss */
+/* line 61, ../sass/modules/_typography.scss */
 .last-known {
   font-size: 0.8em;
 }
@@ -981,12 +990,58 @@ strong {
 /* line 1, ../sass/modules/_bookmarks.scss */
 .bookmarks {
   position: fixed;
-  top: 0;
+  top: -2.5em;
   left: 0;
   width: 100%;
+  text-align: left;
+  padding: 0 1em;
+  opacity: 0;
+  transition: all .3s;
+  z-index: 50;
 }
-
-/* line 8, ../sass/modules/_bookmarks.scss */
-body.load {
-  opacity: 0.3;
+/* line 11, ../sass/modules/_bookmarks.scss */
+.bookmarks.active {
+  opacity: 1;
+  top: 0;
+}
+/* line 15, ../sass/modules/_bookmarks.scss */
+.bookmarks ul {
+  list-style: none;
+  padding: 0;
+}
+/* line 19, ../sass/modules/_bookmarks.scss */
+.bookmarks li {
+  max-width: 6em;
+  float: left;
+  position: relative;
+  padding: 0.2em 0.7em 0.2em 0.2em;
+}
+/* line 26, ../sass/modules/_bookmarks.scss */
+.bookmarks a {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  height: 1.5em;
+  text-decoration: none;
+}
+/* line 35, ../sass/modules/_bookmarks.scss */
+.bookmarks .sublinks {
+  display: none;
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  background-color: #f1f3f4;
+  padding-top: 0.3em;
+}
+/* line 42, ../sass/modules/_bookmarks.scss */
+.bookmarks .sublinks.active {
+  display: block;
+}
+/* line 45, ../sass/modules/_bookmarks.scss */
+.bookmarks .sublinks li {
+  max-width: 10em;
+  clear: left;
+  width: 100%;
 }

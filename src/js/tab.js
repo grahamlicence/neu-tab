@@ -480,20 +480,23 @@ Tab.getWoeid = function (place) {
 };
 
 Tab.books = function (books) {
-    // console.log(books[0].children[0].children);
+    console.log(books[0].children[0].children);
+    console.log(books[0].children[0].children.length);
     // console.log(books[0].children[0]);
     // books[0].children[0] bookmarks bar
     // books[0].children[1] other bookmarks
     // books[0].children[2] mobile bookmarks
     var bookmarksHtml = document.createElement('div'),
         bodyTag = document.getElementsByTagName('body')[0],
-        listHtml = document.createElement('ul');
+        listHtml = document.createElement('ul'),
+        bookmarksVisible = false,
+        dropdownOpen = false;
 
     _.each(books[0].children[0].children, function (book) {
-        if (book.index > 5) { //only use the first 5 for now
+        if (book.index > 50) { //only use the first 5 for now
             return;
         } else {
-            console.log(book);
+            // console.log(book);
             var item = document.createElement('li'),
                 el = document.createElement('a'),
                 list = document.createElement('ul');
@@ -501,16 +504,28 @@ Tab.books = function (books) {
             item.appendChild(el);
             if (book.url) {
                 el.href = book.url;
+                el.title = book.title;
             } else {
                 item.appendChild(list);
+                list.className = 'sublinks';
                 _.each(book.children, function (subBook) {
                     var subListItem = document.createElement('li'),
                         subListLink = document.createElement('a');
+
                     subListLink.href = subBook.url;
                     subListLink.innerText = subBook.title;
+                    subListLink.title = subBook.title;
 
                     subListItem.appendChild(subListLink);
                     list.appendChild(subListItem);
+                });
+                item.addEventListener('mouseover', function () {
+                    list.className += ' active';
+                    dropdownOpen = true;
+                });
+                item.addEventListener('mouseout', function () {
+                    list.className = list.className.replace(' active', '');
+                    dropdownOpen = false;
                 });
                 // el = document.createElement('p');
                 // list heading
@@ -520,9 +535,25 @@ Tab.books = function (books) {
         }
     });
 
+    listHtml.style.width = books[0].children[0].children.length * 6.2 + 'em';
     bookmarksHtml.className = 'bookmarks';
     bookmarksHtml.appendChild(listHtml);
     bodyTag.appendChild(bookmarksHtml);
+
+    bodyTag.addEventListener('mousemove', function(e) {
+        if (dropdownOpen) {
+            return; // don't hide if long dropdown
+        }
+        if (e.y < 200 && !bookmarksVisible) {
+            bookmarksHtml.className += ' active';
+            bookmarksVisible = true;
+        }
+        if (e.y > 200 && bookmarksVisible) {
+            bookmarksHtml.className = bookmarksHtml.className.replace(' active', '');
+            bookmarksVisible = false;
+        }
+            
+    })
 };
 
 // simple jsonp script

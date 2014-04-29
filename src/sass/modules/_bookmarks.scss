@@ -1,10 +1,51 @@
 .bookmarks {
     position:fixed;
-    top: 0;
+    top: -2.5em;
     left:0;
     width: 100%;
-}
-
-body.load {
-    opacity: 0.3;
+    text-align: left;
+    padding: 0 1em;
+    opacity: 0;
+    transition: all .3s;
+    z-index: 50;
+    &.active {
+        opacity: 1;
+        top: 0;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    li {
+        max-width: 6em;
+        float: left;
+        // margin-right: 0.5em;
+        position: relative;
+        padding: 0.2em 0.7em 0.2em 0.2em;
+    }
+    a {
+        white-space: nowrap;    
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        height: 1.5em;
+        text-decoration: none;
+    }
+    .sublinks {
+        display: none;
+        position: absolute;
+        top: 1.5em;
+        left: 0;
+        background-color: $background;
+        padding-top: 0.3em; 
+        &.active {
+            display: block;
+        }
+        li {
+            max-width: 10em;    
+            clear: left;
+            width: 100%;
+        }
+    }
 }
