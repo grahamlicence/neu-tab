@@ -147,7 +147,7 @@ Tab.locationData = function (usingPrevious) {
                 Tab.changeLocation();
             });
             place.innerHTML = loc.formatted_address +
-                '<br><span class="last-known">Using last known location</span> ';
+                '<span class="last-known">Using last known location</span> ';
             place.insertBefore(changeLink);
             // console.log(changeLink)
             // TODO: add change location here
@@ -214,9 +214,10 @@ Tab.locationData = function (usingPrevious) {
             forcastItem.title = day.date;
             forcastItem.className = 'icon icon-' + day.code;
 
-            forcastItem.innerHTML = '<p><strong>' + day.day + '</strong></p>' +
-                    '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
-                    '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
+            forcastItem.innerHTML = '<p class="day"><strong>' + day.day + '</strong></p>' +
+                    // '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
+                    // '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
+                    '<p><span class="high">' + day.high + '&deg;' + results.units.temperature + '</span><span class="low">' +  day.low +'&deg;</span>' + results.units.temperature + '</p>' +
                     '<p>' + day.text +'</p>';
 
             htmlForecast.appendChild(forcastItem);

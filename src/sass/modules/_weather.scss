@@ -10,6 +10,7 @@
     li {
         float: left;
         margin-right: 1.5em;
+        position: relative;
         &:last-child {
             margin-right: 0;
         }
@@ -17,6 +18,17 @@
     p {
         line-height: 1;
         font-size: 0.95em;
+    }
+    .day {
+        margin-bottom: 4.2em;
+    }
+    .high {
+        font-family: 'istokbold';
+        display: block;
+        font-size: 1.1em;
+    }
+    .low {
+        font-size: 0.9em;
     }
     // animate in the weekly forecast
     .icon {
@@ -35,6 +47,9 @@
             width: 100%;
             margin-bottom: 0.2em;
             margin-right: 0;
+            position: absolute;
+            top: 0.4em;
+            left: 0;
         }
     }
 }
@@ -51,6 +66,7 @@
     padding-bottom: 0.3em;
     padding-right: 7em;
     display: inline-block;
+    margin-bottom: 2em;
     .type {
         positon: absolute;
         bottom: 0;
@@ -115,7 +131,8 @@
     font-size: 1.3em;
     line-height: 1.4;
     border-radius: 25px;
-    background: #fff;
+    background: $defaultcolour;
+    color: #fff;
     display: inline-block;
     margin-bottom: 1em;
     width: 25px;
@@ -131,9 +148,10 @@
     left: 1px;
     width: 25px;
     height: 25px;
+    transition: all 0.3s;
     &:before {
         content: "\e631";
-        color: #fff;
+        color: $defaultcolour;
         font-family: "icomoon";
         display: inline-block;
         font-size: 25px;

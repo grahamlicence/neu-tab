@@ -12,17 +12,10 @@
 .hr {
     text-align: right;
 }
-.current-location {    
-    &:before {
-        content: "\e62f";
-        font-family: "icomoon";
-        display: inline-block;
-        font-size: 15px;
-        margin-right: 0.3em;
-        top: 1px;
-        position: relative;
-    }
+.current-date {
+    margin-bottom: 2em;
 }
+
 // clock
 
 .clock {
