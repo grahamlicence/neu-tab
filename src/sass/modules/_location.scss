@@ -1,0 +1,15 @@
+.current-location {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;  
+    &:before {
+        content: "\e62f";
+        font-family: "icomoon";
+        display: inline-block;
+        font-size: 15px;
+        margin-right: 0.3em;
+        top: 1px;
+        position: relative;
+    }
+}
