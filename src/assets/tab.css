@@ -1091,15 +1091,17 @@ strong {
   list-style: none;
   padding: 0;
   margin: 0;
+  position: absolute;
+  left: 0;
 }
-/* line 20, ../sass/modules/_bookmarks.scss */
+/* line 22, ../sass/modules/_bookmarks.scss */
 .bookmarks li {
   max-width: 6em;
   float: left;
   position: relative;
   padding: 0.2em 0.7em 0.2em 0.2em;
 }
-/* line 27, ../sass/modules/_bookmarks.scss */
+/* line 29, ../sass/modules/_bookmarks.scss */
 .bookmarks a {
   white-space: nowrap;
   width: 100%;
@@ -1109,7 +1111,7 @@ strong {
   height: 1.5em;
   text-decoration: none;
 }
-/* line 36, ../sass/modules/_bookmarks.scss */
+/* line 38, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks {
   display: none;
   position: absolute;
@@ -1118,13 +1120,28 @@ strong {
   background-color: rgba(241, 243, 244, 0.9);
   padding-top: 0.3em;
 }
-/* line 43, ../sass/modules/_bookmarks.scss */
+/* line 45, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks.active {
   display: block;
 }
-/* line 46, ../sass/modules/_bookmarks.scss */
+/* line 48, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks li {
   max-width: 10em;
   clear: left;
   width: 100%;
+}
+/* line 54, ../sass/modules/_bookmarks.scss */
+.bookmarks .hover {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+}
+/* line 61, ../sass/modules/_bookmarks.scss */
+.bookmarks .hover--left {
+  left: 0;
+}
+/* line 64, ../sass/modules/_bookmarks.scss */
+.bookmarks .hover--right {
+  right: 30px;
 }

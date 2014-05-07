@@ -488,6 +488,8 @@ Tab.books = function (books) {
     var bookmarksHtml = document.createElement('div'),
         bodyTag = document.getElementsByTagName('body')[0],
         listHtml = document.createElement('ul'),
+        leftHover = document.createElement('a'),
+        rightHover = document.createElement('a'),
         bookmarksVisible = false,
         dropdownOpen = false;
 
@@ -537,8 +539,11 @@ Tab.books = function (books) {
     listHtml.style.width = books[0].children[0].children.length * 6.2 + 'em';
     bookmarksHtml.className = 'bookmarks';
     bookmarksHtml.appendChild(listHtml);
+    bookmarksHtml.appendChild(leftHover);
+    bookmarksHtml.appendChild(rightHover);
     bodyTag.appendChild(bookmarksHtml);
 
+    // show on hover
     bodyTag.addEventListener('mousemove', function(e) {
         if (dropdownOpen) {
             return; // don't hide if long dropdown
@@ -551,8 +556,46 @@ Tab.books = function (books) {
             bookmarksHtml.className = bookmarksHtml.className.replace(' active', '');
             bookmarksVisible = false;
         }
-            
-    })
+    });
+
+    // scroll actions
+    var hover = false;
+    function onHover () {
+        var left = parseFloat(listHtml.style.left) || 0,
+            position = left,
+            checker,
+            direction = this.d;
+        if (left === 0 && this.d === 1 ) {
+            return;
+        }
+        hover = true;
+        checker = setInterval(function () {
+            console.log('check ' + hover)
+            if (!hover) {
+                clearInterval(checker);
+            }
+            position += (direction * 50);
+            listHtml.style.left = position + 'px';
+            console.log(position)
+        }, 100);
+        console.log(position)
+        console.log('onHover ' + this.d + '/' + position + '/' + hover + '/' + window.innerWidth + '/' + bookmarksHtml.style.width)
+    }
+
+    function onHoverOut () {
+        hover = false;
+        console.log('out')
+    }
+    
+    leftHover.className = 'hover hover--left';
+    leftHover.d = 1;
+    leftHover.addEventListener('mouseover', onHover);
+    leftHover.addEventListener('mouseout', onHoverOut);
+
+    rightHover.className = 'hover hover--right';
+    rightHover.d = -1;
+    rightHover.addEventListener('mouseover', onHover);
+    rightHover.addEventListener('mouseout', onHoverOut);
 };
 
 // simple jsonp script
@@ -588,3 +631,4 @@ Tab.init();
 // http://feeds.bbci.co.uk/news/rss.xml
 
 
+// TODO: display weather if connection drops and last got weather > 1hr ago
