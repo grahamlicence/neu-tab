@@ -218,7 +218,7 @@ Tab.locationData = function (usingPrevious) {
                     // '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
                     // '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
                     '<p><span class="high">' + day.high + '&deg;' + results.units.temperature + '</span><span class="low">' +  day.low +'&deg;</span>' + results.units.temperature + '</p>' +
-                    '<p>' + day.text +'</p>';
+                    '<p class="day-text">' + day.text +'</p>';
 
             htmlForecast.appendChild(forcastItem);
             

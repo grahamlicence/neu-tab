@@ -579,50 +579,62 @@ strong {
   position: relative;
 }
 
-/* line 4, ../sass/modules/_weather.scss */
+/* line 1, ../sass/modules/_weather.scss */
 .forecast {
   list-style: none;
   padding: 0;
   display: inline-block;
   margin: 0 auto;
 }
-/* line 10, ../sass/modules/_weather.scss */
+/* line 6, ../sass/modules/_weather.scss */
 .forecast li {
   float: left;
   margin-right: 1.5em;
   position: relative;
 }
-/* line 14, ../sass/modules/_weather.scss */
+/* line 10, ../sass/modules/_weather.scss */
 .forecast li:last-child {
   margin-right: 0;
 }
-/* line 18, ../sass/modules/_weather.scss */
+/* line 14, ../sass/modules/_weather.scss */
 .forecast p {
   line-height: 1;
   font-size: 0.95em;
 }
-/* line 22, ../sass/modules/_weather.scss */
+/* line 20, ../sass/modules/_weather.scss */
+.forecast:hover .shown .day-text {
+  opacity: 1;
+  bottom: 0;
+}
+/* line 25, ../sass/modules/_weather.scss */
 .forecast .day {
   margin-bottom: 4.2em;
 }
-/* line 25, ../sass/modules/_weather.scss */
+/* line 28, ../sass/modules/_weather.scss */
+.forecast .day-text {
+  opacity: 0;
+  position: relative;
+  bottom: -100px;
+  transition: all 0.3s;
+}
+/* line 34, ../sass/modules/_weather.scss */
 .forecast .high {
   font-family: 'istokbold';
   display: block;
   font-size: 1.1em;
 }
-/* line 30, ../sass/modules/_weather.scss */
+/* line 39, ../sass/modules/_weather.scss */
 .forecast .low {
   font-size: 0.9em;
 }
-/* line 34, ../sass/modules/_weather.scss */
+/* line 43, ../sass/modules/_weather.scss */
 .forecast .icon {
   opacity: 0;
   transition: all 0.5s cubic-bezier(0, 1.2, 1, 1);
   -webkit-transform: scale(0.1);
   transform: scale(0.1);
 }
-/* line 39, ../sass/modules/_weather.scss */
+/* line 48, ../sass/modules/_weather.scss */
 .forecast .icon.shown {
   opacity: 1;
   -webkit-transform-origin: 50% 50%;
@@ -630,7 +642,7 @@ strong {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-/* line 46, ../sass/modules/_weather.scss */
+/* line 55, ../sass/modules/_weather.scss */
 .forecast .icon:before {
   width: 100%;
   margin-bottom: 0.2em;
@@ -641,12 +653,12 @@ strong {
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 58, ../sass/modules/_weather.scss */
+  /* line 67, ../sass/modules/_weather.scss */
   .forecast li {
     width: 19%;
   }
 }
-/* line 64, ../sass/modules/_weather.scss */
+/* line 73, ../sass/modules/_weather.scss */
 .weather-now {
   position: relative;
   padding-bottom: 0.3em;
@@ -654,14 +666,14 @@ strong {
   display: inline-block;
   margin-bottom: 2em;
 }
-/* line 70, ../sass/modules/_weather.scss */
+/* line 79, ../sass/modules/_weather.scss */
 .weather-now .type {
   positon: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* line 76, ../sass/modules/_weather.scss */
+/* line 85, ../sass/modules/_weather.scss */
 .weather-temp {
   font-size: 3.5em;
   line-height: 1;
@@ -669,7 +681,7 @@ strong {
   margin-bottom: 0;
 }
 
-/* line 82, ../sass/modules/_weather.scss */
+/* line 91, ../sass/modules/_weather.scss */
 .weather-details {
   position: absolute;
   width: 6em;
@@ -679,21 +691,29 @@ strong {
   padding-top: 2.8em;
 }
 
-/* line 91, ../sass/modules/_weather.scss */
+/* line 100, ../sass/modules/_weather.scss */
 .feels-like {
   font-size: 0.8em;
   line-height: 1;
   margin-bottom: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  position: relative;
+  right: -90px;
 }
 
-/* line 97, ../sass/modules/_weather.scss */
+/* line 110, ../sass/modules/_weather.scss */
 .todays-temp {
   line-height: 1;
   font-size: 0.8em;
   padding-top: 0.11em;
+  opacity: 0;
+  transition: all 0.3s;
+  position: relative;
+  left: -90px;
 }
 
-/* line 103, ../sass/modules/_weather.scss */
+/* line 120, ../sass/modules/_weather.scss */
 .sun-times, .sunrise, .sunset {
   font-size: 0.8em;
   line-height: 1;
@@ -701,30 +721,35 @@ strong {
   padding-left: 1.2em;
 }
 
-/* line 109, ../sass/modules/_weather.scss */
+/* line 126, ../sass/modules/_weather.scss */
 .sunrise {
   margin-bottom: 0.1em;
   margin-top: 0.5em;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* line 114, ../sass/modules/_weather.scss */
+/* line 133, ../sass/modules/_weather.scss */
 .sunset {
   margin-bottom: 0.5em;
   position: relative;
+  top: -25px;
+  transition: top 0.3s;
 }
-/* line 118, ../sass/modules/_weather.scss */
+/* line 139, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
   display: inline-block;
   font-size: 30px;
   margin-right: 0.1em;
-  top: -17px;
+  top: -11px;
   position: absolute;
   left: 0;
+  transition: top 0.3s;
 }
 
-/* line 130, ../sass/modules/_weather.scss */
+/* line 152, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -733,14 +758,14 @@ strong {
   color: #fff;
   display: inline-block;
   margin-bottom: 1em;
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   position: absolute;
   left: 1.5em;
   top: 0;
 }
 
-/* line 144, ../sass/modules/_weather.scss */
+/* line 166, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -750,7 +775,7 @@ strong {
   height: 25px;
   transition: all 0.3s;
 }
-/* line 152, ../sass/modules/_weather.scss */
+/* line 174, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #606090;
@@ -763,13 +788,36 @@ strong {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 164, ../sass/modules/_weather.scss */
+/* line 186, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;
   left: 2px;
   text-align: center;
   width: 20px;
+}
+
+/* line 197, ../sass/modules/_weather.scss */
+.weather-forecast:hover .todays-temp {
+  opacity: 1;
+  left: 0;
+}
+/* line 201, ../sass/modules/_weather.scss */
+.weather-forecast:hover .feels-like {
+  opacity: 1;
+  right: 0;
+}
+/* line 205, ../sass/modules/_weather.scss */
+.weather-forecast:hover .sunrise {
+  opacity: 1;
+}
+/* line 208, ../sass/modules/_weather.scss */
+.weather-forecast:hover .sunset {
+  top: 0;
+}
+/* line 210, ../sass/modules/_weather.scss */
+.weather-forecast:hover .sunset:before {
+  top: -17px;
 }
 
 /* line 4, ../sass/modules/_weather-icons.scss */
