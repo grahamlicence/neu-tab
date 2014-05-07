@@ -210,15 +210,13 @@ Tab.locationData = function (usingPrevious) {
             if (index === 0) {
                 return;
             }
-            forcastItem = document.createElement('li')
-            forcastItem.title = day.date;
+            forcastItem = document.createElement('li');
+            forcastItem.title = day.date + ' - ' + day.text;
             forcastItem.className = 'icon icon-' + day.code;
 
             forcastItem.innerHTML = '<p class="day"><strong>' + day.day + '</strong></p>' +
-                    // '<p>High: ' + day.high + '&deg;' + results.units.temperature + '</p>' +
-                    // '<p>Low:  ' + day.low +'&deg;' + results.units.temperature + '</p>' +
-                    '<p><span class="high">' + day.high + '&deg;' + results.units.temperature + '</span><span class="low">' +  day.low +'&deg;</span>' + results.units.temperature + '</p>' +
-                    '<p class="day-text">' + day.text +'</p>';
+                    '<p><span class="high">' + day.high + '&deg;' + results.units.temperature + '</span>' +
+                    '<span class="low">' +  day.low +'&deg;</span>' + results.units.temperature + '</p>';
 
             htmlForecast.appendChild(forcastItem);
             
