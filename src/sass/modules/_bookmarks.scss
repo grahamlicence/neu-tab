@@ -18,6 +18,7 @@
         margin: 0;
         position: absolute;
         left: 0;
+        transition: left 0.3s;
     }
     li {
         max-width: 6em;

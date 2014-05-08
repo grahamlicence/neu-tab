@@ -537,6 +537,7 @@ Tab.books = function (books) {
     });
 
     listHtml.style.width = books[0].children[0].children.length * 6.2 + 'em';
+    // listHtml.className = 
     bookmarksHtml.className = 'bookmarks';
     bookmarksHtml.appendChild(listHtml);
     bookmarksHtml.appendChild(leftHover);
@@ -558,6 +559,9 @@ Tab.books = function (books) {
         }
     });
 
+    console.log(listHtml)
+    console.log('W: ' + listHtml.innerWidth)
+
     // scroll actions
     var hover = false;
     function onHover () {
@@ -570,11 +574,15 @@ Tab.books = function (books) {
         }
         hover = true;
         checker = setInterval(function () {
-            console.log('check ' + hover)
-            if (!hover) {
+            console.log('check ' + hover + ' pos: ' + position)
+            if (!hover || position === 0) { // or position > bkmrk width - window.innnerWidth
+                console.log('STOP')
                 clearInterval(checker);
             }
             position += (direction * 50);
+            if (position > 0) {
+                position = 0;
+            }
             listHtml.style.left = position + 'px';
             console.log(position)
         }, 100);
