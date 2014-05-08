@@ -598,6 +598,20 @@ Tab.books = function (books) {
     rightHover.addEventListener('mouseout', onHoverOut);
 };
 
+Tab.newsFeed = function () {
+    // bbc feed
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET","http://feeds.bbci.co.uk/news/rss.xml",false);
+    xmlhttp.send("");
+    xmlDoc = xmlhttp.responseXML;
+    var newsItems = xmlDoc.getElementsByTagName("item");
+    _.each(newsItems, function (item, index) {
+        if (index > 9) { return; }
+        var title = item.getElementsByTagName("title")[0].innerHTML;
+        console.log(title);
+    });
+};
+
 // simple jsonp script
 var jsonp = function (url) {
     var script = document.createElement('SCRIPT');
@@ -622,13 +636,10 @@ Tab.init = function  () {
     Tab.showTime();
     Tab.getLocation();
     chrome.bookmarks.getTree(Tab.books);
+    // Tab.newsFeed();
 };
 
 Tab.init();
-
-
-// news feeds view-source:http://www.richmondandtwickenhamtimes.co.uk/news/rss/
-// http://feeds.bbci.co.uk/news/rss.xml
 
 
 // TODO: display weather if connection drops and last got weather > 1hr ago

@@ -15,6 +15,7 @@
       "bookmarks", 
       "geolocation", 
       "http://maps.googleapis.com/", 
-      "http://*.yahooapis.com/" 
+      "http://*.yahooapis.com/",
+      "http://feeds.bbci.co.uk/"
    ]
 }
