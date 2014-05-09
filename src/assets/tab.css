@@ -441,11 +441,16 @@ table {
 }
 
 /* line 1, ../sass/modules/_typography.scss */
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+/* line 2, ../sass/modules/_typography.scss */
 html {
   height: 100%;
 }
 
-/* line 4, ../sass/modules/_typography.scss */
+/* line 5, ../sass/modules/_typography.scss */
 body {
   height: 100%;
   background: url(images/loader.gif) no-repeat center #f1f3f4;
@@ -459,24 +464,24 @@ body {
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-/* line 17, ../sass/modules/_typography.scss */
+/* line 18, ../sass/modules/_typography.scss */
 body.load {
   background: #f1f3f4;
   opacity: 1;
 }
 
-/* line 24, ../sass/modules/_typography.scss */
+/* line 25, ../sass/modules/_typography.scss */
 ::selection {
   background: #f1f3f4;
   color: #606090;
 }
 
-/* line 29, ../sass/modules/_typography.scss */
+/* line 30, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 33, ../sass/modules/_typography.scss */
+/* line 34, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: istokregular;
@@ -484,26 +489,26 @@ p {
   line-height: 2;
 }
 
-/* line 39, ../sass/modules/_typography.scss */
+/* line 40, ../sass/modules/_typography.scss */
 a {
   color: #606090;
 }
-/* line 42, ../sass/modules/_typography.scss */
+/* line 43, ../sass/modules/_typography.scss */
 a:hover, a:focus {
   color: #48486c;
 }
 
-/* line 46, ../sass/modules/_typography.scss */
+/* line 47, ../sass/modules/_typography.scss */
 strong {
   font-family: istokbold;
 }
 
-/* line 50, ../sass/modules/_typography.scss */
+/* line 51, ../sass/modules/_typography.scss */
 .error-message {
   font-size: 0.85em;
 }
 
-/* line 54, ../sass/modules/_typography.scss */
+/* line 55, ../sass/modules/_typography.scss */
 .change-location {
   display: block;
   font-size: 0.8em;
@@ -511,7 +516,7 @@ strong {
   width: 232px;
 }
 
-/* line 61, ../sass/modules/_typography.scss */
+/* line 62, ../sass/modules/_typography.scss */
 .last-known {
   font-size: 0.8em;
 }
@@ -1089,7 +1094,7 @@ strong {
 /* line 15, ../sass/modules/_bookmarks.scss */
 .bookmarks ul {
   list-style: none;
-  padding: 0;
+  padding: 0 0 0 0.5em;
   margin: 0;
   position: absolute;
   left: 0;
@@ -1102,7 +1107,15 @@ strong {
   position: relative;
   padding: 0.2em 0.7em 0.2em 0.2em;
 }
-/* line 30, ../sass/modules/_bookmarks.scss */
+/* line 29, ../sass/modules/_bookmarks.scss */
+.bookmarks li a {
+  padding: 0.3em;
+}
+/* line 31, ../sass/modules/_bookmarks.scss */
+.bookmarks li a:hover, .bookmarks li a:focus {
+  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* line 36, ../sass/modules/_bookmarks.scss */
 .bookmarks a {
   white-space: nowrap;
   width: 100%;
@@ -1111,8 +1124,12 @@ strong {
   display: inline-block;
   height: 1.5em;
   text-decoration: none;
+  color: #000;
+  font-size: 0.75em;
+  cursor: pointer;
+  line-height: 0.9;
 }
-/* line 39, ../sass/modules/_bookmarks.scss */
+/* line 49, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks {
   display: none;
   position: absolute;
@@ -1120,29 +1137,36 @@ strong {
   left: 0;
   background-color: rgba(241, 243, 244, 0.9);
   padding-top: 0.3em;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.44);
+  padding-left: 0;
 }
-/* line 46, ../sass/modules/_bookmarks.scss */
+/* line 58, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks.active {
   display: block;
 }
-/* line 49, ../sass/modules/_bookmarks.scss */
+/* line 61, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks li {
   max-width: 10em;
   clear: left;
   width: 100%;
 }
-/* line 55, ../sass/modules/_bookmarks.scss */
+/* line 67, ../sass/modules/_bookmarks.scss */
+.bookmarks .sublinks a:hover, .bookmarks .sublinks a:focus {
+  box-shadow: none;
+  background: #7373fa;
+}
+/* line 73, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover {
   position: absolute;
   top: 0;
   width: 50px;
   height: 50px;
 }
-/* line 62, ../sass/modules/_bookmarks.scss */
+/* line 80, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover--left {
   left: 0;
 }
-/* line 65, ../sass/modules/_bookmarks.scss */
+/* line 83, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover--right {
   right: 30px;
 }
