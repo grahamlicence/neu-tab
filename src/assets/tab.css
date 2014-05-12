@@ -732,17 +732,19 @@ strong {
   margin-bottom: 0.1em;
   margin-top: 0.5em;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  top: 20px;
 }
 
-/* line 134, ../sass/modules/_weather.scss */
+/* line 136, ../sass/modules/_weather.scss */
 .sunset {
   margin-bottom: 0.5em;
   position: relative;
   top: -25px;
   transition: top 0.3s;
 }
-/* line 140, ../sass/modules/_weather.scss */
+/* line 142, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
@@ -755,7 +757,7 @@ strong {
   transition: top 0.3s;
 }
 
-/* line 153, ../sass/modules/_weather.scss */
+/* line 155, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -771,7 +773,7 @@ strong {
   top: 0;
 }
 
-/* line 167, ../sass/modules/_weather.scss */
+/* line 169, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -781,7 +783,7 @@ strong {
   height: 25px;
   transition: all 0.3s;
 }
-/* line 175, ../sass/modules/_weather.scss */
+/* line 177, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #606090;
@@ -794,7 +796,7 @@ strong {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 187, ../sass/modules/_weather.scss */
+/* line 189, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;
@@ -803,25 +805,26 @@ strong {
   width: 20px;
 }
 
-/* line 198, ../sass/modules/_weather.scss */
+/* line 200, ../sass/modules/_weather.scss */
 .weather-forecast:hover .todays-temp {
   opacity: 1;
   left: 0;
 }
-/* line 202, ../sass/modules/_weather.scss */
+/* line 204, ../sass/modules/_weather.scss */
 .weather-forecast:hover .feels-like {
   opacity: 1;
   right: 0;
 }
-/* line 206, ../sass/modules/_weather.scss */
+/* line 208, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunrise {
   opacity: 1;
+  top: 0;
 }
-/* line 209, ../sass/modules/_weather.scss */
+/* line 212, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset {
   top: 0;
 }
-/* line 211, ../sass/modules/_weather.scss */
+/* line 214, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset:before {
   top: -17px;
 }
@@ -1105,68 +1108,74 @@ strong {
   max-width: 6em;
   float: left;
   position: relative;
-  padding: 0.2em 0.7em 0.2em 0.2em;
+  padding: 0 0.7em 0 0.2em;
 }
-/* line 29, ../sass/modules/_bookmarks.scss */
+/* line 28, ../sass/modules/_bookmarks.scss */
 .bookmarks li a {
   padding: 0.3em;
 }
-/* line 31, ../sass/modules/_bookmarks.scss */
+/* line 30, ../sass/modules/_bookmarks.scss */
 .bookmarks li a:hover, .bookmarks li a:focus {
   box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 36, ../sass/modules/_bookmarks.scss */
+/* line 35, ../sass/modules/_bookmarks.scss */
 .bookmarks a {
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
-  height: 1.5em;
+  display: block;
   text-decoration: none;
   color: #000;
   font-size: 0.75em;
   cursor: pointer;
-  line-height: 0.9;
 }
-/* line 49, ../sass/modules/_bookmarks.scss */
+/* line 47, ../sass/modules/_bookmarks.scss */
+.bookmarks a.subfolder:before {
+  font-family: "icomoon";
+  content: "\e059";
+  display: inline-block;
+  font-size: 10px;
+  margin-right: 0.3em;
+}
+/* line 55, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks {
   display: none;
   position: absolute;
   top: 1.5em;
   left: 0;
   background-color: rgba(241, 243, 244, 0.9);
-  padding-top: 0.3em;
+  padding: 0.3em 0 0.2em 0;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.44);
-  padding-left: 0;
 }
-/* line 58, ../sass/modules/_bookmarks.scss */
+/* line 63, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks.active {
   display: block;
 }
-/* line 61, ../sass/modules/_bookmarks.scss */
+/* line 66, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks li {
   max-width: 10em;
   clear: left;
   width: 100%;
+  padding-right: 0.2em;
 }
-/* line 67, ../sass/modules/_bookmarks.scss */
+/* line 73, ../sass/modules/_bookmarks.scss */
 .bookmarks .sublinks a:hover, .bookmarks .sublinks a:focus {
   box-shadow: none;
   background: #7373fa;
 }
-/* line 73, ../sass/modules/_bookmarks.scss */
+/* line 79, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover {
   position: absolute;
   top: 0;
   width: 50px;
   height: 50px;
 }
-/* line 80, ../sass/modules/_bookmarks.scss */
+/* line 85, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover--left {
   left: 0;
 }
-/* line 83, ../sass/modules/_bookmarks.scss */
+/* line 88, ../sass/modules/_bookmarks.scss */
 .bookmarks .hover--right {
   right: 30px;
 }

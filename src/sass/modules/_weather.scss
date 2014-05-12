@@ -129,7 +129,9 @@
     margin-bottom: 0.1em;
     margin-top: 0.5em;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    top: 20px;
 }
 .sunset {
     @extend .sun-times;
@@ -205,6 +207,7 @@
         }
         .sunrise {
             opacity: 1;
+            top: 0;
         }
         .sunset {
             top: 0;

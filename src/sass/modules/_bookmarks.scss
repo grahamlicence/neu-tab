@@ -23,9 +23,8 @@
     li {
         max-width: 6em;
         float: left;
-        // margin-right: 0.5em;
         position: relative;
-        padding: 0.2em 0.7em 0.2em 0.2em;
+        padding: 0 0.7em 0 0.2em;
         a {
             padding: 0.3em;
             &:hover, &:focus {
@@ -38,13 +37,20 @@
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: inline-block;
-        height: 1.5em;
+        display: block;
+        // height: 1.5em;
         text-decoration: none;
         color: #000;
         font-size: 0.75em;
         cursor: pointer;
-        line-height: 0.9;
+        // line-height: 0.9;
+        &.subfolder:before {
+            font-family: "icomoon";
+            content: "\e059";
+            display: inline-block;
+            font-size: 10px;
+            margin-right: 0.3em;
+        }
     }
     .sublinks {
         display: none;
@@ -52,9 +58,8 @@
         top: 1.5em;
         left: 0;
         background-color: $opaqueBackground;
-        padding-top: 0.3em;
+        padding: 0.3em 0 0.2em 0;
         box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.44);
-        padding-left: 0;
         &.active {
             display: block;
         }
@@ -62,6 +67,7 @@
             max-width: 10em;    
             clear: left;
             width: 100%;
+            padding-right: 0.2em;
         }
         a {
             &:hover, &:focus {
@@ -75,7 +81,6 @@
         top: 0;
         width: 50px;
         height: 50px;
-        // background-color: red;
     }
     .hover--left {
         left: 0;

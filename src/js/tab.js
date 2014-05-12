@@ -479,7 +479,7 @@ Tab.getWoeid = function (place) {
 };
 
 Tab.books = function (books) {
-    console.log(books[0].children[0].children);
+    console.log(books);
     console.log(books[0].children[0].children.length);
     // console.log(books[0].children[0]);
     // books[0].children[0] bookmarks bar
@@ -507,6 +507,7 @@ Tab.books = function (books) {
                 el.href = book.url;
                 el.title = book.title;
             } else {
+                el.className = 'subfolder';
                 item.appendChild(list);
                 list.className = 'sublinks';
                 _.each(book.children, function (subBook) {
@@ -564,10 +565,7 @@ Tab.books = function (books) {
         }
     });
 
-    console.log(listHtml)
     var l = document.getElementsByClassName('bookmark-list');
-    console.log(l[0].clientWidth)
-    console.log('W: ' + listHtml.innerWidth)
 
     // scroll actions
     var hover = false;
@@ -583,8 +581,8 @@ Tab.books = function (books) {
         hover = true;
         console.log('end ' +  width)
         checker = setInterval(function () {
-            console.log('check ' + hover + ' pos: ' + position + '/' + width)
-            if (!hover || position === 0 || (width + position) < 0) { // or position > bkmrk width - window.innnerWidth
+            if (!hover || position === 0 || (width + position) < 0) {
+                // TODO: issues with the right hover, poss move to dropdown?
                 console.log('STOP')
                 clearInterval(checker);
             }
@@ -593,15 +591,11 @@ Tab.books = function (books) {
                 position = 0;
             }
             listHtml.style.left = position + 'px';
-            console.log(position)
         }, 100);
-        console.log(position)
-        console.log('onHover ' + this.d + '/' + position + '/' + hover + '/' + window.innerWidth + '/' + bookmarksHtml.style.width)
     }
 
     function onHoverOut () {
         hover = false;
-        console.log('out')
     }
     
     leftHover.className = 'hover hover--left';
