@@ -143,12 +143,12 @@
         content: "\e600";
         font-family: "icomoon";
         display: inline-block;
-        font-size: 30px;
+        font-size: 25px;
         margin-right: 0.1em;
-        top: -11px;
+        top: -8px;
         position: absolute;
-        left: 0;
-        transition: top 0.3s;
+        left: 4px;
+        transition: all 0.3s;
     }
 }
 
@@ -213,6 +213,8 @@
             top: 0;
             &:before {
                 top: -17px;
+                font-size: 30px;
+                left: 0;
             }
         }
     }
