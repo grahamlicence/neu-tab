@@ -5,11 +5,14 @@
     margin: 0 auto;
     li {
         float: left;
-        margin-right: 1.5em;
+        padding-right: 1.5em;
         position: relative;
-        width: 4em;
+        width: 5em;
         &:last-child {
-            margin-right: 0;
+            padding-right: 0;
+        }
+        &:hover {
+            color: darken($defaultcolour, 20%);
         }
     }
     p {
@@ -217,5 +220,14 @@
                 left: 0;
             }
         }
+    }
+}
+
+.forecast-summary {
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: darken($defaultcolour, 20%);
+    &.shown {
+        opacity: 1;
     }
 }

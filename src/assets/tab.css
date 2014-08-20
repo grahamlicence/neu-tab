@@ -4,21 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'istokbold';
   src: url("fonts/istok-bold-webfont.svg#istokbold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'icomoon';
   src: url("fonts/icomoon.svg#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
-
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -26,7 +23,7 @@
 /**
  * Correct `block` display not defined in IE 8/9.
  */
-/* line 22, ../sass/base/_normalize.scss */
+/* line 11, ../sass/base/_normalize.scss */
 article,
 aside,
 details,
@@ -45,7 +42,7 @@ summary {
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */
-/* line 32, ../sass/base/_normalize.scss */
+/* line 30, ../sass/base/_normalize.scss */
 audio,
 canvas,
 video {
@@ -66,7 +63,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9.
  * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-/* line 52, ../sass/base/_normalize.scss */
+/* line 51, ../sass/base/_normalize.scss */
 [hidden],
 template {
   display: none;
@@ -125,7 +122,7 @@ a:focus {
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-/* line 109, ../sass/base/_normalize.scss */
+/* line 108, ../sass/base/_normalize.scss */
 a:active,
 a:hover {
   outline: 0;
@@ -155,7 +152,7 @@ abbr[title] {
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 140, ../sass/base/_normalize.scss */
+/* line 139, ../sass/base/_normalize.scss */
 b,
 strong {
   font-weight: bold;
@@ -191,7 +188,7 @@ mark {
 /**
  * Correct font family set oddly in Safari 5 and Chrome.
  */
-/* line 178, ../sass/base/_normalize.scss */
+/* line 175, ../sass/base/_normalize.scss */
 code,
 kbd,
 pre,
@@ -227,7 +224,7 @@ small {
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-/* line 212, ../sass/base/_normalize.scss */
+/* line 211, ../sass/base/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -306,7 +303,7 @@ legend {
  * 2. Correct font size not being inherited in all browsers.
  * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 292, ../sass/base/_normalize.scss */
+/* line 289, ../sass/base/_normalize.scss */
 button,
 input,
 select,
@@ -323,7 +320,7 @@ textarea {
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 304, ../sass/base/_normalize.scss */
+/* line 303, ../sass/base/_normalize.scss */
 button,
 input {
   line-height: normal;
@@ -335,7 +332,7 @@ input {
  * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
  * Correct `select` style inheritance in Firefox 4+ and Opera.
  */
-/* line 316, ../sass/base/_normalize.scss */
+/* line 315, ../sass/base/_normalize.scss */
 button,
 select {
   text-transform: none;
@@ -348,7 +345,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 331, ../sass/base/_normalize.scss */
+/* line 328, ../sass/base/_normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -362,7 +359,7 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 341, ../sass/base/_normalize.scss */
+/* line 340, ../sass/base/_normalize.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
@@ -372,7 +369,7 @@ html input[disabled] {
  * 1. Address box sizing set to `content-box` in IE 8/9.
  * 2. Remove excess padding in IE 8/9.
  */
-/* line 351, ../sass/base/_normalize.scss */
+/* line 350, ../sass/base/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -400,7 +397,7 @@ input[type="search"] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-/* line 375, ../sass/base/_normalize.scss */
+/* line 374, ../sass/base/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -409,7 +406,7 @@ input[type="search"]::-webkit-search-decoration {
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-/* line 384, ../sass/base/_normalize.scss */
+/* line 383, ../sass/base/_normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -493,7 +490,7 @@ p {
 a {
   color: #606090;
 }
-/* line 43, ../sass/modules/_typography.scss */
+/* line 42, ../sass/modules/_typography.scss */
 a:hover, a:focus {
   color: #48486c;
 }
@@ -594,53 +591,57 @@ strong {
 /* line 6, ../sass/modules/_weather.scss */
 .forecast li {
   float: left;
-  margin-right: 1.5em;
+  padding-right: 1.5em;
   position: relative;
-  width: 4em;
+  width: 5em;
 }
 /* line 11, ../sass/modules/_weather.scss */
 .forecast li:last-child {
-  margin-right: 0;
+  padding-right: 0;
 }
-/* line 15, ../sass/modules/_weather.scss */
+/* line 14, ../sass/modules/_weather.scss */
+.forecast li:hover {
+  color: #373753;
+}
+/* line 18, ../sass/modules/_weather.scss */
 .forecast p {
   line-height: 1;
   font-size: 0.95em;
 }
-/* line 21, ../sass/modules/_weather.scss */
+/* line 24, ../sass/modules/_weather.scss */
 .forecast:hover .shown .day-text {
   opacity: 1;
   bottom: 0;
 }
-/* line 26, ../sass/modules/_weather.scss */
+/* line 29, ../sass/modules/_weather.scss */
 .forecast .day {
   margin-bottom: 4.2em;
 }
-/* line 29, ../sass/modules/_weather.scss */
+/* line 32, ../sass/modules/_weather.scss */
 .forecast .day-text {
   opacity: 0;
   position: relative;
   bottom: -100px;
   transition: all 0.3s;
 }
-/* line 35, ../sass/modules/_weather.scss */
+/* line 38, ../sass/modules/_weather.scss */
 .forecast .high {
   font-family: 'istokbold';
   display: block;
   font-size: 1.1em;
 }
-/* line 40, ../sass/modules/_weather.scss */
+/* line 43, ../sass/modules/_weather.scss */
 .forecast .low {
   font-size: 0.9em;
 }
-/* line 44, ../sass/modules/_weather.scss */
+/* line 47, ../sass/modules/_weather.scss */
 .forecast .icon {
   opacity: 0;
   transition: all 0.5s cubic-bezier(0, 1.2, 1, 1);
   -webkit-transform: scale(0.1);
   transform: scale(0.1);
 }
-/* line 49, ../sass/modules/_weather.scss */
+/* line 52, ../sass/modules/_weather.scss */
 .forecast .icon.shown {
   opacity: 1;
   -webkit-transform-origin: 50% 50%;
@@ -648,7 +649,7 @@ strong {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-/* line 56, ../sass/modules/_weather.scss */
+/* line 59, ../sass/modules/_weather.scss */
 .forecast .icon:before {
   width: 100%;
   margin-bottom: 0.2em;
@@ -659,12 +660,12 @@ strong {
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 68, ../sass/modules/_weather.scss */
+  /* line 71, ../sass/modules/_weather.scss */
   .forecast li {
     width: 19%;
   }
 }
-/* line 74, ../sass/modules/_weather.scss */
+/* line 77, ../sass/modules/_weather.scss */
 .weather-now {
   position: relative;
   padding-bottom: 0.3em;
@@ -672,14 +673,14 @@ strong {
   display: inline-block;
   margin-bottom: 2em;
 }
-/* line 80, ../sass/modules/_weather.scss */
+/* line 83, ../sass/modules/_weather.scss */
 .weather-now .type {
   positon: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* line 86, ../sass/modules/_weather.scss */
+/* line 89, ../sass/modules/_weather.scss */
 .weather-temp {
   font-size: 3.5em;
   line-height: 1;
@@ -687,7 +688,7 @@ strong {
   margin-bottom: 0;
 }
 
-/* line 92, ../sass/modules/_weather.scss */
+/* line 95, ../sass/modules/_weather.scss */
 .weather-details {
   position: absolute;
   width: 6em;
@@ -697,7 +698,7 @@ strong {
   padding-top: 2.8em;
 }
 
-/* line 101, ../sass/modules/_weather.scss */
+/* line 104, ../sass/modules/_weather.scss */
 .feels-like {
   font-size: 0.8em;
   line-height: 1;
@@ -708,7 +709,7 @@ strong {
   right: -90px;
 }
 
-/* line 111, ../sass/modules/_weather.scss */
+/* line 114, ../sass/modules/_weather.scss */
 .todays-temp {
   line-height: 1;
   font-size: 0.8em;
@@ -719,7 +720,7 @@ strong {
   left: -90px;
 }
 
-/* line 121, ../sass/modules/_weather.scss */
+/* line 124, ../sass/modules/_weather.scss */
 .sun-times, .sunrise, .sunset {
   font-size: 0.8em;
   line-height: 1;
@@ -727,7 +728,7 @@ strong {
   padding-left: 1.2em;
 }
 
-/* line 127, ../sass/modules/_weather.scss */
+/* line 130, ../sass/modules/_weather.scss */
 .sunrise {
   margin-bottom: 0.1em;
   margin-top: 0.5em;
@@ -737,14 +738,14 @@ strong {
   top: 20px;
 }
 
-/* line 136, ../sass/modules/_weather.scss */
+/* line 139, ../sass/modules/_weather.scss */
 .sunset {
   margin-bottom: 0.5em;
   position: relative;
   top: -25px;
   transition: top 0.3s;
 }
-/* line 142, ../sass/modules/_weather.scss */
+/* line 145, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
@@ -757,7 +758,7 @@ strong {
   transition: all 0.3s;
 }
 
-/* line 155, ../sass/modules/_weather.scss */
+/* line 158, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -773,7 +774,7 @@ strong {
   top: 0;
 }
 
-/* line 169, ../sass/modules/_weather.scss */
+/* line 172, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -783,7 +784,7 @@ strong {
   height: 25px;
   transition: all 0.3s;
 }
-/* line 177, ../sass/modules/_weather.scss */
+/* line 180, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #606090;
@@ -796,7 +797,7 @@ strong {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 189, ../sass/modules/_weather.scss */
+/* line 192, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;
@@ -805,30 +806,41 @@ strong {
   width: 20px;
 }
 
-/* line 200, ../sass/modules/_weather.scss */
+/* line 203, ../sass/modules/_weather.scss */
 .weather-forecast:hover .todays-temp {
   opacity: 1;
   left: 0;
 }
-/* line 204, ../sass/modules/_weather.scss */
+/* line 207, ../sass/modules/_weather.scss */
 .weather-forecast:hover .feels-like {
   opacity: 1;
   right: 0;
 }
-/* line 208, ../sass/modules/_weather.scss */
+/* line 211, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunrise {
   opacity: 1;
   top: 0;
 }
-/* line 212, ../sass/modules/_weather.scss */
+/* line 215, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset {
   top: 0;
 }
-/* line 214, ../sass/modules/_weather.scss */
+/* line 217, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset:before {
   top: -17px;
   font-size: 30px;
   left: 0;
+}
+
+/* line 226, ../sass/modules/_weather.scss */
+.forecast-summary {
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: #373753;
+}
+/* line 230, ../sass/modules/_weather.scss */
+.forecast-summary.shown {
+  opacity: 1;
 }
 
 /* line 4, ../sass/modules/_weather-icons.scss */

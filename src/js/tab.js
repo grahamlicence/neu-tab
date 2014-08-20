@@ -181,6 +181,7 @@ Tab.locationData = function (usingPrevious) {
             htmlData,
             temp = results.units.temperature,
             htmlForecast = document.createElement('ul'),
+            htmlForecastData = document.createElement('p'),
             forcastItem;
 
         weather.className = 'weather-forecast';
@@ -197,6 +198,8 @@ Tab.locationData = function (usingPrevious) {
             '<p class="sunrise" title="Sunrise time">' + results.astronomy.sunrise + '</p>' +
             '<p class="sunset" title="Sunset time">' + results.astronomy.sunset + '</p>' +
             '</div></div>';
+        htmlForecastData.innerHTML = '&nbsp;';
+        htmlForecastData.className = 'forecast-summary';
 
         // *********************
         // wind direction is position from so arrow would point 180 deg from this
@@ -206,12 +209,14 @@ Tab.locationData = function (usingPrevious) {
         htmlForecast.className = 'forecast';
 
         forecast.appendChild(htmlForecast);
+        forecast.appendChild(htmlForecastData);
+
         _.each(results.item.forecast, function(day, index) {
             if (index === 0) {
                 return;
             }
             forcastItem = document.createElement('li');
-            forcastItem.title = day.date + ' - ' + day.text;
+            forcastItem.details = day.date + ' - ' + day.text;
             forcastItem.className = 'icon icon-' + day.code;
 
             forcastItem.innerHTML = '<p class="day"><strong>' + day.day + '</strong></p>' +
@@ -219,6 +224,17 @@ Tab.locationData = function (usingPrevious) {
                     '<span class="low">' +  day.low +'&deg;</span>' + results.units.temperature + '</p>';
 
             htmlForecast.appendChild(forcastItem);
+
+            function hoverDay () {
+                htmlForecastData.innerHTML = this.details;
+                htmlForecastData.className += ' shown';
+            }
+            function hoverOffDay () {
+                // htmlForecastData.innerHTML = '&nbsp;';
+                htmlForecastData.className = 'forecast-summary';
+            }
+            forcastItem.addEventListener('mouseover', hoverDay);
+            forcastItem.addEventListener('mouseout', hoverOffDay);
             
             // animate in the item
             function shown (el) {
@@ -632,7 +648,7 @@ var jsonp = function (url) {
 
 // store current version and update all settings on new release
 Tab.versionUpdate = function () {
-    var version = '0.1.3';
+    var version = '0.1.4';
         current = localStorage.getItem('version');
     if (current !== version) {
         console.log('New version')
@@ -646,11 +662,8 @@ Tab.init = function  () {
     Tab.versionUpdate();
     Tab.showTime();
     Tab.getLocation();
-    chrome.bookmarks.getTree(Tab.books);
+    // chrome.bookmarks.getTree(Tab.books);
     // Tab.newsFeed();
 };
 
 Tab.init();
-
-
-// TODO: display weather if connection drops and last got weather > 1hr ago
