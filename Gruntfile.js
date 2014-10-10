@@ -11,6 +11,8 @@
 */
 module.exports = function(grunt) {
 
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
     grunt.initConfig({
         /*  Read the package.json file for config values.
             package.json keeps devDependencies as well, which make it easy 
@@ -20,7 +22,15 @@ module.exports = function(grunt) {
 
         // Compass uses config.rb automatically so we don't need to specify anything
         compass: {
-            build: {}
+            build: {
+                options: {
+                    sassDir: 'src/sass',
+                    cssDir: 'src/assets',
+                    outputStyle: 'expanded',
+                    noLineComments: false,
+                    sourcemap: true
+                }
+            }
         },
 
         /*  Concat concatenates the minified jQuery and our uglified code.
@@ -85,6 +95,15 @@ module.exports = function(grunt) {
           }
         },
 
+        connect: {
+          dev: {
+            options: {
+                port: 8000,
+                base: './src/'
+            }
+          }
+        },
+
         watch: {
             css: {
                 files: 'src/sass/**/*.scss',
@@ -100,16 +119,6 @@ module.exports = function(grunt) {
         }
     });
 
-    /*  Loading the grunt plugins.
-        If you're having problems loading any plugins, make sure you have the latest package.json file
-        and try running `npm install`.
-    */
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     /*  The default task runs when you just run `grunt`.
         "js" and "css" tasks process their respective files. 
@@ -119,6 +128,9 @@ module.exports = function(grunt) {
 
     // minify and copy files over to production folder
     grunt.registerTask('release', ['uglify', 'compass', 'cssmin', 'copy']);
+
+    // development set up
+    grunt.registerTask('dev', ['connect', 'compass', 'watch']);
 
     grunt.registerTask('default', ['watch']);
 };

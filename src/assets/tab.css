@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'istokregular';
-  src: url("fonts/istok-regular-webfont.svg#istokregular") format("svg");
-  font-weight: normal;
   font-style: normal;
+  font-weight: 400;
+  src: url("fonts/istok-regular-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: 'istokbold';
-  src: url("fonts/istok-bold-webfont.svg#istokbold") format("svg");
-  font-weight: normal;
   font-style: normal;
+  font-weight: 700;
+  src: url("fonts/istok-bold-webfont.woff2") format("woff2");
 }
 @font-face {
   font-family: 'icomoon';
-  src: url("fonts/icomoon.svg#icomoon") format("svg");
+  src: url("fonts/icomoon.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -450,7 +450,7 @@ html {
 /* line 5, ../sass/modules/_typography.scss */
 body {
   height: 100%;
-  background: url(images/loader.gif) no-repeat center #f1f3f4;
+  background: url(images/loader.gif) no-repeat center #F1F3F4;
   color: #606090;
   text-align: center;
   -webkit-transition: color 0.5s;
@@ -463,13 +463,13 @@ body {
 }
 /* line 18, ../sass/modules/_typography.scss */
 body.load {
-  background: #f1f3f4;
+  background: #F1F3F4;
   opacity: 1;
 }
 
 /* line 25, ../sass/modules/_typography.scss */
 ::selection {
-  background: #f1f3f4;
+  background: #F1F3F4;
   color: #606090;
 }
 
@@ -492,7 +492,7 @@ a {
 }
 /* line 42, ../sass/modules/_typography.scss */
 a:hover, a:focus {
-  color: #48486c;
+  color: #48486C;
 }
 
 /* line 47, ../sass/modules/_typography.scss */
@@ -511,11 +511,6 @@ strong {
   font-size: 0.8em;
   text-align: left;
   width: 232px;
-}
-
-/* line 62, ../sass/modules/_typography.scss */
-.last-known {
-  font-size: 0.8em;
 }
 
 /* line 1, ../sass/modules/_time.scss */
@@ -579,6 +574,12 @@ strong {
   margin-right: 0.3em;
   top: 1px;
   position: relative;
+}
+
+/* line 17, ../sass/modules/_location.scss */
+.last-known {
+  font-size: 0.8em;
+  margin-left: 1em;
 }
 
 /* line 1, ../sass/modules/_weather.scss */
@@ -1193,3 +1194,5 @@ strong {
 .bookmarks .hover--right {
   right: 30px;
 }
+
+/*# sourceMappingURL=tab.css.map */
