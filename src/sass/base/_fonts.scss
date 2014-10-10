@@ -1,13 +1,21 @@
+// @import url(http://fonts.googleapis.com/css?family=Istok+Web:400,700);
 @font-face {
     font-family: 'istokregular';
+    font-weight: normal;
     font-style: normal;
-    font-weight: 400;
-    src: url('fonts/istok-regular-webfont.woff2') format('woff2');
-}@font-face {
+    src: url('fonts/istok-regular-webfont.woff') format('woff');
+}
+@font-face {
     font-family: 'istokbold';
+    font-weight: normal;
     font-style: normal;
-    font-weight: 700;
-    src: url('fonts/istok-bold-webfont.woff2') format('woff2');
+    src: url('fonts/istok-bold-webfont.woff') format('woff');
+}
+@font-face {
+    font-family: 'notosans';
+    font-weight: normal;
+    font-style: normal;
+    src: url('fonts/notosans-regular-webfont.woff') format('woff');
 }
 @font-face {
     font-family: 'icomoon';

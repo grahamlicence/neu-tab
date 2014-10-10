@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "Neu Tab",
-   "version": "0.3.2",
+   "version": "0.3.3",
    "description": "Alternative new tab screen.",
    "icons": {
       "128": "assets/images/icon128.png",
@@ -11,6 +11,9 @@
    "chrome_url_overrides": {
       "newtab": "index.html"
    },
+   "web_accessible_resources": [
+     "font/*.woff2"
+   ],
    "permissions": [
       "bookmarks", 
       "geolocation", 
