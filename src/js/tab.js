@@ -1,3 +1,7 @@
+
+// Note: null added after insertBefore due to Chrome 38 issue
+// ref  https://code.google.com/p/chromium/issues/detail?id=419780
+
 var Tab = {};
 
 Tab.showTime = function () {
@@ -48,7 +52,7 @@ Tab.showTime = function () {
         clock.appendChild(markers);
         clock.setAttribute('viewBox', '0 0 32 32');
         clock.setAttribute('class', 'clock is-x10');
-        bodyTag.insertBefore(clock);
+        bodyTag.insertBefore(clock, null);
 
         var setTime = function(){
           var date = new Date(),
@@ -92,13 +96,13 @@ Tab.showTime = function () {
             year = today.getFullYear();
         date.className = 'current-date';
         date.innerHTML = day + ' ' + today.getDate() + ' ' + month + ' ' + year;
-        document.getElementsByTagName('body')[0].insertBefore(date);
+        document.getElementsByTagName('body')[0].insertBefore(date, null);
     }
     // makeClock();
     // just showing one clock
     // TODO: switch between the two
     time.className = 'current-time';
-    bodyTag.insertBefore(time);
+    bodyTag.insertBefore(time, null);
     setInterval(updateClock, 500);
     updateClock();
 
@@ -135,7 +139,7 @@ Tab.locationData = function (usingPrevious) {
     // display the name of our current location
     function locationName () {
         place.className = 'current-location';
-        document.getElementsByTagName('body')[0].insertBefore(place);
+        document.getElementsByTagName('body')[0].insertBefore(place, null);
         // place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
         // check for errors and using previous manual location
         if (usingPrevious) {
@@ -148,7 +152,7 @@ Tab.locationData = function (usingPrevious) {
             });
             place.innerHTML = loc.formatted_address +
                 '<span class="last-known">Using last known location</span> ';
-            place.insertBefore(changeLink);
+            place.insertBefore(changeLink, null);
             // console.log(changeLink)
             // TODO: add change location here
         } else {
@@ -296,9 +300,9 @@ Tab.locationData = function (usingPrevious) {
     }
     // add content to page
     wrapper.className = 'weather-wrapper';
-    bodyTag.insertBefore(wrapper);
-    wrapper.insertBefore(weather);
-    wrapper.insertBefore(forecast);
+    bodyTag.insertBefore(wrapper, null);
+    wrapper.insertBefore(weather, null);
+    wrapper.insertBefore(forecast, null);
     locationName();
 
 };
@@ -401,7 +405,7 @@ Tab.getLocation = function () {
             bodyTag = document.getElementsByTagName('body')[0];
         
         p.className = 'error-message';
-        bodyTag.insertBefore(p);
+        bodyTag.insertBefore(p, null);
         
         if (navigator.onLine) {
             p.innerText = 'Unable to get location';
@@ -432,10 +436,10 @@ Tab.changeLocation = function () {
     label.className = 'change-location';
     btn.innerText = 'Enter';
     input.placeholder = 'eg London';
-    bodyTag.insertBefore(changeDiv);
-    changeDiv.insertBefore(label);
-    changeDiv.insertBefore(input);
-    changeDiv.insertBefore(btn);
+    bodyTag.insertBefore(changeDiv, null);
+    changeDiv.insertBefore(label, null);
+    changeDiv.insertBefore(input, null);
+    changeDiv.insertBefore(btn, null);
 
     btn.addEventListener('click', function (e) {
         e.preventDefault();
@@ -637,13 +641,6 @@ Tab.newsFeed = function () {
         var title = item.getElementsByTagName("title")[0].innerHTML;
         console.log(title);
     });
-};
-
-// simple jsonp script
-var jsonp = function (url) {
-    var script = document.createElement('SCRIPT');
-        script.src = url;
-    document.body.appendChild(script);
 };
 
 // store current version and update all settings on new release
