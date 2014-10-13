@@ -1,7 +1,3 @@
-
-// Note: null added after insertBefore due to Chrome 38 issue
-// ref  https://code.google.com/p/chromium/issues/detail?id=419780
-
 var Tab = {};
 
 Tab.showTime = function () {
@@ -52,7 +48,7 @@ Tab.showTime = function () {
         clock.appendChild(markers);
         clock.setAttribute('viewBox', '0 0 32 32');
         clock.setAttribute('class', 'clock is-x10');
-        bodyTag.insertBefore(clock, null);
+        bodyTag.appendChild(clock);
 
         var setTime = function(){
           var date = new Date(),
@@ -96,14 +92,14 @@ Tab.showTime = function () {
             year = today.getFullYear();
         date.className = 'current-date';
         date.innerHTML = day + ' ' + today.getDate() + ' ' + month + ' ' + year;
-        document.getElementsByTagName('body')[0].insertBefore(date, null);
+        document.getElementsByTagName('body')[0].appendChild(date);
     }
     // makeClock();
     // just showing one clock
-    // TODO: switch between the two
+    // TODO: add switch between the two
     time.className = 'current-time';
-    bodyTag.insertBefore(time, null);
-    setInterval(updateClock, 500);
+    bodyTag.appendChild(time);
+    setInterval(updateClock, 1000);
     updateClock();
 
     // show day
@@ -139,7 +135,7 @@ Tab.locationData = function (usingPrevious) {
     // display the name of our current location
     function locationName () {
         place.className = 'current-location';
-        document.getElementsByTagName('body')[0].insertBefore(place, null);
+        document.getElementsByTagName('body')[0].appendChild(place);
         // place.innerHTML = loc.address_components[1].long_name + ', ' + loc.address_components[2].long_name;
         // check for errors and using previous manual location
         if (usingPrevious) {
@@ -152,7 +148,7 @@ Tab.locationData = function (usingPrevious) {
             });
             place.innerHTML = loc.formatted_address +
                 '<span class="last-known">Using last known location</span> ';
-            place.insertBefore(changeLink, null);
+            place.appendChild(changeLink);
             // console.log(changeLink)
             // TODO: add change location here
         } else {
@@ -300,9 +296,9 @@ Tab.locationData = function (usingPrevious) {
     }
     // add content to page
     wrapper.className = 'weather-wrapper';
-    bodyTag.insertBefore(wrapper, null);
-    wrapper.insertBefore(weather, null);
-    wrapper.insertBefore(forecast, null);
+    bodyTag.appendChild(wrapper);
+    wrapper.appendChild(weather);
+    wrapper.appendChild(forecast);
     locationName();
 
 };
@@ -389,13 +385,13 @@ Tab.getLocation = function () {
 
         // TODO: just use yahoo??
         //http://where.yahooapis.com/geocode?location=37.42,-122.12&flags=J&gflags=R&appid=zHgnBS4m
-    }, 
+    },
     // check if connected to internet
     function (error) {
         // console.log(error)
         // ooh interesting error here, seems Chrome location only works on wifi devices
         // https://code.google.com/p/chromium/issues/detail?id=41001
-        console.log('Failed to get location')
+        console.log('Failed to get location');
         // check if previous location added
         if (localStorage.getItem('location')) {
             Tab.locationData(true);
@@ -405,7 +401,7 @@ Tab.getLocation = function () {
             bodyTag = document.getElementsByTagName('body')[0];
         
         p.className = 'error-message';
-        bodyTag.insertBefore(p, null);
+        bodyTag.appendChild(p);
         
         if (navigator.onLine) {
             p.innerText = 'Unable to get location';
@@ -420,7 +416,7 @@ Tab.getLocation = function () {
 };
 
 // add form to change location
-Tab.changeLocation = function () {      
+Tab.changeLocation = function () {
     var label = document.createElement('label'),
         changeDiv = document.createElement('div'),
         input = document.createElement('input'),
@@ -436,10 +432,10 @@ Tab.changeLocation = function () {
     label.className = 'change-location';
     btn.innerText = 'Enter';
     input.placeholder = 'eg London';
-    bodyTag.insertBefore(changeDiv, null);
-    changeDiv.insertBefore(label, null);
-    changeDiv.insertBefore(input, null);
-    changeDiv.insertBefore(btn, null);
+    bodyTag.appendChild(changeDiv);
+    changeDiv.appendChild(label);
+    changeDiv.appendChild(input);
+    changeDiv.appendChild(btn);
 
     btn.addEventListener('click', function (e) {
         e.preventDefault();
@@ -458,189 +454,39 @@ Tab.getWoeid = function (place) {
     var request, data;
     // get the WOEID needed for yahoo weather lookups
 
-    // is this line needed?
-    // navigator.geolocation.getCurrentPosition(function(position) {
+    console.log('New WOEID request')
 
-        console.log('New WOEID request')
+    request = new XMLHttpRequest;
 
-        request = new XMLHttpRequest;
+    request.open('GET', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22' + place + '%22&format=json', true);
 
-        request.open('GET', 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.places%20where%20text%3D%22' + place + '%22&format=json', true);
-
-        request.onload = function() {
-          if (request.status >= 200 && request.status < 400) {
-            data = JSON.parse(request.responseText);
-            console.log(data)
-            var dubs;
-            // sometimes this comes back as an array
-            if (data.query.results.place.woeid) {
-                dubs = data.query.results.place.woeid;
-            } else {
-                dubs = data.query.results.place[0].woeid;                
-            }
-            localStorage.setItem('woeid', dubs);
-            // TODO: update weather when location changed
-            Tab.locationData();
-
-          } else {
-            // error
-            console.log('error status')
-          }
-        };
-
-        request.onerror = function() {
-            console.log('error')
-          // There was a connection error of some sort
-        };
-
-        request.send();
-        
-    // });
-};
-
-Tab.books = function (books) {
-    console.log(books);
-    console.log(books[0].children[0].children.length);
-    // console.log(books[0].children[0]);
-    // books[0].children[0] bookmarks bar
-    // books[0].children[1] other bookmarks
-    // books[0].children[2] mobile bookmarks
-    var bookmarksHtml = document.createElement('div'),
-        bodyTag = document.getElementsByTagName('body')[0],
-        listHtml = document.createElement('ul'),
-        leftHover = document.createElement('a'),
-        rightHover = document.createElement('a'),
-        bookmarksVisible = false,
-        dropdownOpen = false;
-
-    _.each(books[0].children[0].children, function (book) {
-        if (book.index > 50) { //only use the first 5 for now
-            return;
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        data = JSON.parse(request.responseText);
+        console.log(data)
+        var dubs;
+        // sometimes this comes back as an array
+        if (data.query.results.place.woeid) {
+            dubs = data.query.results.place.woeid;
         } else {
-            // console.log(book);
-            var item = document.createElement('li'),
-                el = document.createElement('a'),
-                list = document.createElement('ul');
-
-            item.appendChild(el);
-            if (book.url) {
-                el.href = book.url;
-                el.title = book.title;
-            } else {
-                el.className = 'subfolder';
-                item.appendChild(list);
-                list.className = 'sublinks';
-                _.each(book.children, function (subBook) {
-                    var subListItem = document.createElement('li'),
-                        subListLink = document.createElement('a');
-
-                    subListLink.href = subBook.url;
-                    subListLink.innerText = subBook.title;
-                    subListLink.title = subBook.title;
-
-                    subListItem.appendChild(subListLink);
-                    list.appendChild(subListItem);
-                });
-                item.addEventListener('click', function () {
-                    if (dropdownOpen) {
-                        list.className = list.className.replace(' active', '');
-                        dropdownOpen = false;
-                    } else {
-                        list.className += ' active';
-                        dropdownOpen = true;
-                    }
-                });
-                list.addEventListener('mouseleave', function () {
-                    list.className = list.className.replace(' active', '');
-                    dropdownOpen = false;
-                });
-                // el = document.createElement('p');
-                // list heading
-            }
-            el.innerText = book.title;
-            listHtml.appendChild(item);
+            dubs = data.query.results.place[0].woeid;                
         }
-    });
+        localStorage.setItem('woeid', dubs);
+        // TODO: update weather when location changed
+        Tab.locationData();
 
-    listHtml.style.width = books[0].children[0].children.length * 6.2 + 'em';
-    listHtml.className = 'bookmark-list';
-    bookmarksHtml.className = 'bookmarks';
-    bookmarksHtml.appendChild(listHtml);
-    bookmarksHtml.appendChild(leftHover);
-    bookmarksHtml.appendChild(rightHover);
-    bodyTag.appendChild(bookmarksHtml);
+      } else {
+        // error
+        console.log('error status')
+      }
+    };
 
-    // show on hover
-    bodyTag.addEventListener('mousemove', function(e) {
-        if (dropdownOpen) {
-            return; // don't hide if long dropdown
-        }
-        if (e.y < 200 && !bookmarksVisible) {
-            bookmarksHtml.className += ' active';
-            bookmarksVisible = true;
-        }
-        if (e.y > 200 && bookmarksVisible) {
-            bookmarksHtml.className = bookmarksHtml.className.replace(' active', '');
-            bookmarksVisible = false;
-        }
-    });
+    request.onerror = function() {
+        console.log('error')
+      // There was a connection error of some sort
+    };
 
-    var l = document.getElementsByClassName('bookmark-list');
-
-    // scroll actions
-    var hover = false;
-    function onHover () {
-        var left = parseFloat(listHtml.style.left) || -1,
-            position = left,
-            checker,
-            width = document.getElementsByClassName('bookmark-list')[0].clientWidth - window.innerWidth,
-            direction = this.d;
-        if (left === 0 && this.d === 1 || (width + position) < 0 && this.d === -1) {
-            return;
-        }
-        hover = true;
-        console.log('end ' +  width)
-        checker = setInterval(function () {
-            if (!hover || position === 0 || (width + position) < 0) {
-                // TODO: issues with the right hover, poss move to dropdown?
-                console.log('STOP')
-                clearInterval(checker);
-            }
-            position += (direction * 50);
-            if (position > 0) {
-                position = 0;
-            }
-            listHtml.style.left = position + 'px';
-        }, 100);
-    }
-
-    function onHoverOut () {
-        hover = false;
-    }
-    
-    leftHover.className = 'hover hover--left';
-    leftHover.d = 1;
-    leftHover.addEventListener('mouseover', onHover);
-    leftHover.addEventListener('mouseout', onHoverOut);
-
-    rightHover.className = 'hover hover--right';
-    rightHover.d = -1;
-    rightHover.addEventListener('mouseover', onHover);
-    rightHover.addEventListener('mouseout', onHoverOut);
-};
-
-Tab.newsFeed = function () {
-    // bbc feed
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","http://feeds.bbci.co.uk/news/rss.xml",false);
-    xmlhttp.send("");
-    xmlDoc = xmlhttp.responseXML;
-    var newsItems = xmlDoc.getElementsByTagName("item");
-    _.each(newsItems, function (item, index) {
-        if (index > 9) { return; }
-        var title = item.getElementsByTagName("title")[0].innerHTML;
-        console.log(title);
-    });
+    request.send();
 };
 
 // store current version and update all settings on new release
@@ -659,8 +505,6 @@ Tab.init = function  () {
     Tab.versionUpdate();
     Tab.showTime();
     Tab.getLocation();
-    // chrome.bookmarks.getTree(Tab.books);
-    // Tab.newsFeed();
 };
 
 Tab.init();

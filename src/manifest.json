@@ -12,10 +12,8 @@
       "newtab": "index.html"
    },
    "permissions": [
-      "bookmarks", 
       "geolocation", 
       "http://maps.googleapis.com/", 
-      "http://*.yahooapis.com/",
-      "http://feeds.bbci.co.uk/"
+      "http://*.yahooapis.com/"
    ]
 }
