@@ -1,6 +1,5 @@
 $background: #F1F3F4;
-$opaqueBackground: rgba(241, 243, 244, 0.9);
+$opaqueBackground: rgba($background, 0.9);
 $defaultcolour: #606090;
 $linkcolour: #606090;
 $linkhover: #48486C;
-$bookmarksHover: #506C9F;

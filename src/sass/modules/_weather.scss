@@ -1,3 +1,12 @@
+.weather-loader {
+    background: url(images/loader.gif) no-repeat center $background;
+    display: block;
+    height: 320px;
+    width: 320px;
+}
+.weather-wrapper {
+    height: 320px;
+}
 .forecast {
     list-style: none;
     padding: 0;

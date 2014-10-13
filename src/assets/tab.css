@@ -457,7 +457,6 @@ html {
 body {
   height: 100%;
   font-size: 16px;
-  background: url(images/loader.gif) no-repeat center #F1F3F4;
   color: #606090;
   text-align: center;
   -webkit-transition: color 0.5s;
@@ -468,24 +467,24 @@ body {
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-/* line 19, ../sass/modules/_typography.scss */
+/* line 18, ../sass/modules/_typography.scss */
 body.load {
   background: #F1F3F4;
   opacity: 1;
 }
 
-/* line 26, ../sass/modules/_typography.scss */
+/* line 25, ../sass/modules/_typography.scss */
 ::selection {
   background: #F1F3F4;
   color: #606090;
 }
 
-/* line 31, ../sass/modules/_typography.scss */
+/* line 30, ../sass/modules/_typography.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 35, ../sass/modules/_typography.scss */
+/* line 34, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
   font-family: 'istokregular', sans-serif;
@@ -494,21 +493,21 @@ p {
   line-height: 2;
 }
 
-/* line 44, ../sass/modules/_typography.scss */
+/* line 43, ../sass/modules/_typography.scss */
 a {
   color: #606090;
 }
-/* line 46, ../sass/modules/_typography.scss */
+/* line 45, ../sass/modules/_typography.scss */
 a:hover, a:focus {
   color: #48486C;
 }
 
-/* line 55, ../sass/modules/_typography.scss */
+/* line 54, ../sass/modules/_typography.scss */
 .error-message {
   font-size: 0.85em;
 }
 
-/* line 59, ../sass/modules/_typography.scss */
+/* line 58, ../sass/modules/_typography.scss */
 .change-location {
   display: block;
   font-size: 0.8em;
@@ -521,7 +520,7 @@ a:hover, a:focus {
   font-size: 4em;
   line-height: 1;
   width: 5em;
-  margin: 0 auto;
+  margin: -3em auto 0;
 }
 
 /* line 7, ../sass/modules/_time.scss */
@@ -550,15 +549,16 @@ a:hover, a:focus {
 
 /* line 27, ../sass/modules/_time.scss */
 .clock.is-x10 {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+  opacity: 0.05;
 }
 
 @media only screen and (min-height: 600px) {
-  /* line 32, ../sass/modules/_time.scss */
+  /* line 33, ../sass/modules/_time.scss */
   .clock.is-x10 {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
   }
 }
 /* line 1, ../sass/modules/_location.scss */
@@ -586,66 +586,79 @@ a:hover, a:focus {
 }
 
 /* line 1, ../sass/modules/_weather.scss */
+.weather-loader {
+  background: url(images/loader.gif) no-repeat center #F1F3F4;
+  display: block;
+  height: 320px;
+  width: 320px;
+}
+
+/* line 7, ../sass/modules/_weather.scss */
+.weather-wrapper {
+  height: 320px;
+}
+
+/* line 10, ../sass/modules/_weather.scss */
 .forecast {
   list-style: none;
   padding: 0;
   display: inline-block;
   margin: 0 auto;
 }
-/* line 6, ../sass/modules/_weather.scss */
+/* line 15, ../sass/modules/_weather.scss */
 .forecast li {
   float: left;
   padding-right: 1.5em;
   position: relative;
   width: 5em;
 }
-/* line 11, ../sass/modules/_weather.scss */
+/* line 20, ../sass/modules/_weather.scss */
 .forecast li:last-child {
   padding-right: 0;
 }
-/* line 14, ../sass/modules/_weather.scss */
+/* line 23, ../sass/modules/_weather.scss */
 .forecast li:hover {
   color: #373753;
 }
-/* line 18, ../sass/modules/_weather.scss */
+/* line 27, ../sass/modules/_weather.scss */
 .forecast p {
   line-height: 1;
   font-size: 0.95em;
 }
-/* line 24, ../sass/modules/_weather.scss */
+/* line 33, ../sass/modules/_weather.scss */
 .forecast:hover .shown .day-text {
   opacity: 1;
   bottom: 0;
 }
-/* line 29, ../sass/modules/_weather.scss */
+/* line 38, ../sass/modules/_weather.scss */
 .forecast .day {
   margin-bottom: 4.2em;
 }
-/* line 32, ../sass/modules/_weather.scss */
+/* line 41, ../sass/modules/_weather.scss */
 .forecast .day-text {
   opacity: 0;
   position: relative;
   bottom: -100px;
   transition: all 0.3s;
 }
-/* line 38, ../sass/modules/_weather.scss */
+/* line 47, ../sass/modules/_weather.scss */
 .forecast .high {
   font-weight: bold;
   display: block;
   font-size: 1.1em;
 }
-/* line 44, ../sass/modules/_weather.scss */
+/* line 53, ../sass/modules/_weather.scss */
 .forecast .low {
   font-size: 0.9em;
 }
-/* line 48, ../sass/modules/_weather.scss */
+/* line 57, ../sass/modules/_weather.scss */
 .forecast .icon {
   opacity: 0;
   transition: all 0.5s cubic-bezier(0, 1.2, 1, 1);
   -webkit-transform: scale(0.1);
   transform: scale(0.1);
 }
-/* line 53, ../sass/modules/_weather.scss */
+/* line 62, ../sass/modules/_weather.scss */
 .forecast .icon.shown {
   opacity: 1;
   -webkit-transform-origin: 50% 50%;
@@ -653,7 +666,7 @@ a:hover, a:focus {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-/* line 60, ../sass/modules/_weather.scss */
+/* line 69, ../sass/modules/_weather.scss */
 .forecast .icon:before {
   width: 100%;
   margin-bottom: 0.2em;
@@ -664,12 +677,12 @@ a:hover, a:focus {
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 72, ../sass/modules/_weather.scss */
+  /* line 81, ../sass/modules/_weather.scss */
   .forecast li {
     width: 19%;
   }
 }
-/* line 78, ../sass/modules/_weather.scss */
+/* line 87, ../sass/modules/_weather.scss */
 .weather-now {
   position: relative;
   padding-bottom: 0.3em;
@@ -677,14 +690,14 @@ a:hover, a:focus {
   display: inline-block;
   margin-bottom: 2em;
 }
-/* line 84, ../sass/modules/_weather.scss */
+/* line 93, ../sass/modules/_weather.scss */
 .weather-now .type {
   positon: absolute;
   bottom: 0;
   left: 0;
 }
 
-/* line 90, ../sass/modules/_weather.scss */
+/* line 99, ../sass/modules/_weather.scss */
 .weather-temp {
   font-size: 3.5em;
   line-height: 1;
@@ -692,7 +705,7 @@ a:hover, a:focus {
   margin-bottom: 0;
 }
 
-/* line 96, ../sass/modules/_weather.scss */
+/* line 105, ../sass/modules/_weather.scss */
 .weather-details {
   position: absolute;
   width: 6em;
@@ -702,7 +715,7 @@ a:hover, a:focus {
   padding-top: 2.8em;
 }
 
-/* line 105, ../sass/modules/_weather.scss */
+/* line 114, ../sass/modules/_weather.scss */
 .feels-like {
   font-size: 0.8em;
   line-height: 1;
@@ -713,7 +726,7 @@ a:hover, a:focus {
   right: -90px;
 }
 
-/* line 115, ../sass/modules/_weather.scss */
+/* line 124, ../sass/modules/_weather.scss */
 .todays-temp {
   line-height: 1;
   font-size: 0.8em;
@@ -724,7 +737,7 @@ a:hover, a:focus {
   left: -90px;
 }
 
-/* line 125, ../sass/modules/_weather.scss */
+/* line 134, ../sass/modules/_weather.scss */
 .sun-times, .sunrise, .sunset {
   font-size: 0.8em;
   line-height: 1;
@@ -732,7 +745,7 @@ a:hover, a:focus {
   padding-left: 1.2em;
 }
 
-/* line 131, ../sass/modules/_weather.scss */
+/* line 140, ../sass/modules/_weather.scss */
 .sunrise {
   margin-bottom: 0.1em;
   margin-top: 0.5em;
@@ -742,14 +755,14 @@ a:hover, a:focus {
   top: 20px;
 }
 
-/* line 140, ../sass/modules/_weather.scss */
+/* line 149, ../sass/modules/_weather.scss */
 .sunset {
   margin-bottom: 0.5em;
   position: relative;
   top: -25px;
   transition: top 0.3s;
 }
-/* line 146, ../sass/modules/_weather.scss */
+/* line 155, ../sass/modules/_weather.scss */
 .sunset:before {
   content: "\e600";
   font-family: "icomoon";
@@ -762,7 +775,7 @@ a:hover, a:focus {
   transition: all 0.3s;
 }
 
-/* line 159, ../sass/modules/_weather.scss */
+/* line 168, ../sass/modules/_weather.scss */
 .wind-speed {
   font-size: 1.3em;
   line-height: 1.4;
@@ -778,7 +791,7 @@ a:hover, a:focus {
   top: 0;
 }
 
-/* line 173, ../sass/modules/_weather.scss */
+/* line 182, ../sass/modules/_weather.scss */
 .wind-speed--icon {
   display: inline-block;
   position: absolute;
@@ -788,7 +801,7 @@ a:hover, a:focus {
   height: 25px;
   transition: all 0.3s;
 }
-/* line 181, ../sass/modules/_weather.scss */
+/* line 190, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
   color: #606090;
@@ -801,7 +814,7 @@ a:hover, a:focus {
   -webkit-transform: rotate(45deg);
 }
 
-/* line 193, ../sass/modules/_weather.scss */
+/* line 202, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
   top: 0;
@@ -810,39 +823,39 @@ a:hover, a:focus {
   width: 20px;
 }
 
-/* line 204, ../sass/modules/_weather.scss */
+/* line 213, ../sass/modules/_weather.scss */
 .weather-forecast:hover .todays-temp {
   opacity: 1;
   left: 0;
 }
-/* line 208, ../sass/modules/_weather.scss */
+/* line 217, ../sass/modules/_weather.scss */
 .weather-forecast:hover .feels-like {
   opacity: 1;
   right: 0;
 }
-/* line 212, ../sass/modules/_weather.scss */
+/* line 221, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunrise {
   opacity: 1;
   top: 0;
 }
-/* line 216, ../sass/modules/_weather.scss */
+/* line 225, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset {
   top: 0;
 }
-/* line 218, ../sass/modules/_weather.scss */
+/* line 227, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset:before {
   top: -17px;
   font-size: 30px;
   left: 0;
 }
 
-/* line 227, ../sass/modules/_weather.scss */
+/* line 236, ../sass/modules/_weather.scss */
 .forecast-summary {
   opacity: 0;
   transition: opacity 0.3s;
   color: #373753;
 }
-/* line 231, ../sass/modules/_weather.scss */
+/* line 240, ../sass/modules/_weather.scss */
 .forecast-summary.shown {
   opacity: 1;
 }
@@ -1093,109 +1106,6 @@ a:hover, a:focus {
 /* line 249, ../sass/modules/_weather-icons.scss */
 .icon-47:before {
   content: "\e60e";
-}
-
-/* line 1, ../sass/modules/_bookmarks.scss */
-.bookmarks {
-  position: fixed;
-  top: -2.5em;
-  left: 0;
-  width: 100%;
-  text-align: left;
-  padding: 0 1em;
-  opacity: 0;
-  transition: all .3s;
-  z-index: 50;
-}
-/* line 11, ../sass/modules/_bookmarks.scss */
-.bookmarks.active {
-  opacity: 1;
-  top: 0;
-}
-/* line 15, ../sass/modules/_bookmarks.scss */
-.bookmarks ul {
-  list-style: none;
-  padding: 0 0 0 0.5em;
-  margin: 0;
-  position: absolute;
-  left: 0;
-  transition: left 0.3s;
-}
-/* line 23, ../sass/modules/_bookmarks.scss */
-.bookmarks li {
-  max-width: 6em;
-  float: left;
-  position: relative;
-  padding: 0 0.7em 0 0.2em;
-}
-/* line 28, ../sass/modules/_bookmarks.scss */
-.bookmarks li a {
-  padding: 0.3em;
-}
-/* line 30, ../sass/modules/_bookmarks.scss */
-.bookmarks li a:hover, .bookmarks li a:focus {
-  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-/* line 35, ../sass/modules/_bookmarks.scss */
-.bookmarks a {
-  white-space: nowrap;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  text-decoration: none;
-  color: #000;
-  font-size: 0.75em;
-  cursor: pointer;
-}
-/* line 47, ../sass/modules/_bookmarks.scss */
-.bookmarks a.subfolder:before {
-  font-family: "icomoon";
-  content: "\e059";
-  display: inline-block;
-  font-size: 10px;
-  margin-right: 0.3em;
-}
-/* line 55, ../sass/modules/_bookmarks.scss */
-.bookmarks .sublinks {
-  display: none;
-  position: absolute;
-  top: 1.5em;
-  left: 0;
-  background-color: rgba(241, 243, 244, 0.9);
-  padding: 0.3em 0 0.2em 0;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.44);
-}
-/* line 63, ../sass/modules/_bookmarks.scss */
-.bookmarks .sublinks.active {
-  display: block;
-}
-/* line 66, ../sass/modules/_bookmarks.scss */
-.bookmarks .sublinks li {
-  max-width: 10em;
-  clear: left;
-  width: 100%;
-  padding-right: 0.2em;
-}
-/* line 73, ../sass/modules/_bookmarks.scss */
-.bookmarks .sublinks a:hover, .bookmarks .sublinks a:focus {
-  box-shadow: none;
-  background: #7373fa;
-}
-/* line 79, ../sass/modules/_bookmarks.scss */
-.bookmarks .hover {
-  position: absolute;
-  top: 0;
-  width: 50px;
-  height: 50px;
-}
-/* line 85, ../sass/modules/_bookmarks.scss */
-.bookmarks .hover--left {
-  left: 0;
-}
-/* line 88, ../sass/modules/_bookmarks.scss */
-.bookmarks .hover--right {
-  right: 30px;
 }
 
 /*# sourceMappingURL=tab.css.map */

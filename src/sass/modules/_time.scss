@@ -2,7 +2,7 @@
     font-size: 4em;
     line-height: 1;
     width: 5em;
-    margin: 0 auto;
+    margin: -3em auto 0;
 }
 .bk {
     display: inline-block;
@@ -25,12 +25,13 @@
     fill: $defaultcolour;
 }
 .clock.is-x10 {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+    opacity: 0.05;
 }
 @media only screen and (min-height: 600px) {
     .clock.is-x10 {
-        width: 250px;
-        height: 250px;
+        width: 350px;
+        height: 350px;
     }
 }

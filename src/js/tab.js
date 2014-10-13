@@ -5,7 +5,8 @@ Tab.showTime = function () {
     var time = document.createElement('p'),
         date = document.createElement('p'),
         clock = document.createElementNS("http://www.w3.org/2000/svg", 'svg'),
-        bodyTag = document.getElementsByTagName('body')[0];
+        bodyTag = document.getElementsByTagName('body')[0],
+        weatherLoader = document.createElement('div');
 
     // analogue clock
     function makeClock () {
@@ -94,9 +95,8 @@ Tab.showTime = function () {
         date.innerHTML = day + ' ' + today.getDate() + ' ' + month + ' ' + year;
         document.getElementsByTagName('body')[0].appendChild(date);
     }
-    // makeClock();
-    // just showing one clock
-    // TODO: add switch between the two
+    // add analogue clock
+    makeClock();
     time.className = 'current-time';
     bodyTag.appendChild(time);
     setInterval(updateClock, 1000);
@@ -104,6 +104,10 @@ Tab.showTime = function () {
 
     // show day
     showDay();
+    
+    bodyTag.className = 'load';
+    weatherLoader.className = 'weather-loader'
+    bodyTag.appendChild(weatherLoader);
 };
 
 Tab.removeOldData = function () {
@@ -247,7 +251,6 @@ Tab.locationData = function (usingPrevious) {
         });
 
         weather.innerHTML = htmlData;
-        bodyTag.className = 'load';
     }
 
     function fetchWeatherForecast () {
@@ -296,6 +299,8 @@ Tab.locationData = function (usingPrevious) {
     }
     // add content to page
     wrapper.className = 'weather-wrapper';
+    //remove loader and replace with weather content
+    document.getElementsByClassName('weather-loader')[0].remove();
     bodyTag.appendChild(wrapper);
     wrapper.appendChild(weather);
     wrapper.appendChild(forecast);
