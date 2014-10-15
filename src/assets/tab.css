@@ -17,6 +17,12 @@
   src: url("fonts/notosans-regular-webfont.woff") format("woff");
 }
 @font-face {
+  font-family: 'roboto';
+  font-weight: normal;
+  font-style: normal;
+  src: url("fonts/roboto-thin-webfont.woff") format("woff");
+}
+@font-face {
   font-family: 'icomoon';
   src: url("fonts/icomoon.woff") format("woff");
   font-weight: normal;
@@ -457,7 +463,7 @@ html {
 body {
   height: 100%;
   font-size: 16px;
-  color: #606090;
+  color: #78787A;
   text-align: center;
   -webkit-transition: color 0.5s;
   -webkit-transition: opacity 0.5s ease;
@@ -469,14 +475,14 @@ body {
 }
 /* line 18, ../sass/modules/_typography.scss */
 body.load {
-  background: #F1F3F4;
+  background: #efefef;
   opacity: 1;
 }
 
 /* line 25, ../sass/modules/_typography.scss */
 ::selection {
-  background: #F1F3F4;
-  color: #606090;
+  background: #efefef;
+  color: #78787A;
 }
 
 /* line 30, ../sass/modules/_typography.scss */
@@ -487,27 +493,27 @@ h1 {
 /* line 34, ../sass/modules/_typography.scss */
 p {
   font-size: 1em;
-  font-family: 'istokregular', sans-serif;
+  font-family: 'roboto', sans-serif;
   font-weight: bold;
   margin: 0 0 0.3em;
   line-height: 2;
 }
 
-/* line 43, ../sass/modules/_typography.scss */
+/* line 42, ../sass/modules/_typography.scss */
 a {
   color: #606090;
 }
-/* line 45, ../sass/modules/_typography.scss */
+/* line 44, ../sass/modules/_typography.scss */
 a:hover, a:focus {
   color: #48486C;
 }
 
-/* line 54, ../sass/modules/_typography.scss */
+/* line 53, ../sass/modules/_typography.scss */
 .error-message {
   font-size: 0.85em;
 }
 
-/* line 58, ../sass/modules/_typography.scss */
+/* line 57, ../sass/modules/_typography.scss */
 .change-location {
   display: block;
   font-size: 0.8em;
@@ -517,50 +523,82 @@ a:hover, a:focus {
 
 /* line 1, ../sass/modules/_time.scss */
 .current-time {
+  font-family: 'roboto';
   font-size: 4em;
   line-height: 1;
-  width: 5em;
+  width: 5.5em;
   margin: -3em auto 0;
+  font-weight: normal;
+}
+@media only screen and (min-width: 1000px) {
+  /* line 1, ../sass/modules/_time.scss */
+  .current-time {
+    font-size: 9em;
+    margin-top: -1em;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  /* line 1, ../sass/modules/_time.scss */
+  .current-time {
+    font-size: 13em;
+  }
 }
 
-/* line 7, ../sass/modules/_time.scss */
+/* line 16, ../sass/modules/_time.scss */
 .bk {
   display: inline-block;
-  min-width: 70px;
+  min-width: 72px;
   text-align: center;
 }
 
-/* line 13, ../sass/modules/_time.scss */
+/* line 22, ../sass/modules/_time.scss */
 .hr {
   text-align: right;
 }
 
-/* line 16, ../sass/modules/_time.scss */
+/* line 25, ../sass/modules/_time.scss */
+.sc {
+  text-align: left;
+}
+
+/* line 28, ../sass/modules/_time.scss */
 .current-date {
   margin-bottom: 2em;
 }
 
-/* line 22, ../sass/modules/_time.scss */
+/* line 34, ../sass/modules/_time.scss */
 .clock {
   width: 32px;
   height: 32px;
-  fill: #606090;
+  fill: #78787A;
 }
 
-/* line 27, ../sass/modules/_time.scss */
+/* line 39, ../sass/modules/_time.scss */
 .clock.is-x10 {
   width: 100px;
   height: 100px;
   opacity: 0.05;
 }
-
 @media only screen and (min-height: 600px) {
-  /* line 33, ../sass/modules/_time.scss */
+  /* line 39, ../sass/modules/_time.scss */
   .clock.is-x10 {
     width: 350px;
     height: 350px;
   }
 }
+@media only screen and (min-width: 1000px) {
+  /* line 39, ../sass/modules/_time.scss */
+  .clock.is-x10 {
+    margin-top: -7em;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  /* line 39, ../sass/modules/_time.scss */
+  .clock.is-x10 {
+    margin-top: -5em;
+  }
+}
+
 /* line 1, ../sass/modules/_location.scss */
 .current-location {
   position: fixed;
@@ -587,7 +625,7 @@ a:hover, a:focus {
 
 /* line 1, ../sass/modules/_weather.scss */
 .weather-loader {
-  background: url(images/loader.gif) no-repeat center #F1F3F4;
+  background: url(images/loader.gif) no-repeat center #efefef;
   display: block;
   height: 320px;
   width: 320px;
@@ -618,7 +656,7 @@ a:hover, a:focus {
 }
 /* line 23, ../sass/modules/_weather.scss */
 .forecast li:hover {
-  color: #373753;
+  color: #454547;
 }
 /* line 27, ../sass/modules/_weather.scss */
 .forecast p {
@@ -780,7 +818,7 @@ a:hover, a:focus {
   font-size: 1.3em;
   line-height: 1.4;
   border-radius: 25px;
-  background: #606090;
+  background: #78787A;
   color: #fff;
   display: inline-block;
   margin-bottom: 1em;
@@ -804,7 +842,7 @@ a:hover, a:focus {
 /* line 190, ../sass/modules/_weather.scss */
 .wind-speed--icon:before {
   content: "\e631";
-  color: #606090;
+  color: #78787A;
   font-family: "icomoon";
   display: inline-block;
   font-size: 25px;
@@ -853,7 +891,7 @@ a:hover, a:focus {
 .forecast-summary {
   opacity: 0;
   transition: opacity 0.3s;
-  color: #373753;
+  color: #454547;
 }
 /* line 240, ../sass/modules/_weather.scss */
 .forecast-summary.shown {

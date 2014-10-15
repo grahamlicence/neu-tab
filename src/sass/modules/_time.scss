@@ -1,17 +1,29 @@
 .current-time {
+    font-family: 'roboto';
     font-size: 4em;
     line-height: 1;
-    width: 5em;
+    width: 5.5em;
     margin: -3em auto 0;
+    font-weight: normal;
+    @media only screen and (min-width: 1000px) {
+        font-size: 9em;
+        margin-top: -1em;
+    }
+    @media only screen and (min-width: 1200px) {
+        font-size: 13em;
+    }
 }
 .bk {
     display: inline-block;
-    min-width: 70px;
+    min-width: 72px;
     // text-align: left;
     text-align: center;
 }
 .hr {
     text-align: right;
+}
+.sc {
+    text-align: left;
 }
 .current-date {
     margin-bottom: 2em;
@@ -28,10 +40,14 @@
     width: 100px;
     height: 100px;
     opacity: 0.05;
-}
-@media only screen and (min-height: 600px) {
-    .clock.is-x10 {
+    @media only screen and (min-height: 600px) {
         width: 350px;
         height: 350px;
+    }
+    @media only screen and (min-width: 1000px) {
+        margin-top: -7em;
+    }
+    @media only screen and (min-width: 1200px) {
+        margin-top: -5em;
     }
 }

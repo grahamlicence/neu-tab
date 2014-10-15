@@ -1,4 +1,3 @@
-// @import url(http://fonts.googleapis.com/css?family=Istok+Web:400,700);
 @font-face {
     font-family: 'istokregular';
     font-weight: normal;
@@ -16,6 +15,12 @@
     font-weight: normal;
     font-style: normal;
     src: url('fonts/notosans-regular-webfont.woff') format('woff');
+}
+@font-face {
+    font-family: 'roboto';
+    font-weight: normal;
+    font-style: normal;
+    src: url('fonts/roboto-thin-webfont.woff') format('woff');
 }
 @font-face {
     font-family: 'icomoon';

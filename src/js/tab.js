@@ -84,7 +84,7 @@ Tab.showTime = function () {
         if (seconds < 10) {
             seconds = '0' + seconds;
         }
-        time.innerHTML = '<span class="bk hr">' + hours + '</span>:<span class="bk">' + minutes + '</span>:<span class="bk">' + seconds + '</span>';
+        time.innerHTML = '<span class="bk hr">' + hours + '</span>:<span class="bk mn">' + minutes + '</span>:<span class="bk sc">' + seconds + '</span>';
     }
     function showDay () {
         var today = new Date(),
