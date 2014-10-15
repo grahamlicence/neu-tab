@@ -1,7 +1,7 @@
 {
    "manifest_version": 2,
    "name": "Neu Tab",
-   "version": "0.3.5",
+   "version": "0.4.0",
    "description": "Alternative new tab screen.",
    "icons": {
       "128": "assets/images/icon128.png",
@@ -12,10 +12,8 @@
       "newtab": "index.html"
    },
    "permissions": [
-      "bookmarks", 
       "geolocation", 
       "http://maps.googleapis.com/", 
-      "http://*.yahooapis.com/",
-      "http://feeds.bbci.co.uk/"
+      "http://*.yahooapis.com/"
    ]
 }
