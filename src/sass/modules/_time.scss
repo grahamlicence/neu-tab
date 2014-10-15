@@ -5,26 +5,31 @@
     width: 5.5em;
     margin: -3em auto 0;
     font-weight: normal;
-    @media only screen and (min-width: 1000px) {
+    @media #{$laptop} {
         font-size: 9em;
-        margin-top: -1em;
+        margin-top: 0;
     }
-    @media only screen and (min-width: 1200px) {
+    @media #{$large} {
         font-size: 13em;
     }
 }
 .bk {
     display: inline-block;
-    min-width: 72px;
-    // text-align: left;
     text-align: center;
+    min-width: 72px;
+    @media #{$laptop} {
+        min-width: 165px;
+    }
+    @media #{$large} {
+        min-width: 235px;
+    }
 }
-.hr {
-    text-align: right;
-}
-.sc {
-    text-align: left;
-}
+// .hr {
+//     text-align: right;
+// }
+// .sc {
+//     text-align: left;
+// }
 .current-date {
     margin-bottom: 2em;
 }
@@ -40,14 +45,19 @@
     width: 100px;
     height: 100px;
     opacity: 0.05;
+    position: absolute;
+    top: 7em;
+    left: 50%;
+    margin-left: -50px;
     @media only screen and (min-height: 600px) {
         width: 350px;
         height: 350px;
+        margin-left: -175px;
     }
-    @media only screen and (min-width: 1000px) {
+    @media #{$laptop} {
         margin-top: -7em;
     }
-    @media only screen and (min-width: 1200px) {
-        margin-top: -5em;
+    @media #{$large} {
+        margin-top: 1em;
     }
 }

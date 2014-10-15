@@ -3,3 +3,7 @@ $opaqueBackground: rgba($background, 0.9);
 $defaultcolour: #78787A;
 $linkcolour: #606090;
 $linkhover: #48486C;
+
+// Breakpoints
+$laptop: 'only screen and (min-width: 1000px)';
+$large: 'only screen and (min-width: 1200px)';

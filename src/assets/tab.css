@@ -534,7 +534,7 @@ a:hover, a:focus {
   /* line 1, ../sass/modules/_time.scss */
   .current-time {
     font-size: 9em;
-    margin-top: -1em;
+    margin-top: 0;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -547,55 +547,62 @@ a:hover, a:focus {
 /* line 16, ../sass/modules/_time.scss */
 .bk {
   display: inline-block;
-  min-width: 72px;
   text-align: center;
+  min-width: 72px;
+}
+@media only screen and (min-width: 1000px) {
+  /* line 16, ../sass/modules/_time.scss */
+  .bk {
+    min-width: 165px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  /* line 16, ../sass/modules/_time.scss */
+  .bk {
+    min-width: 235px;
+  }
 }
 
-/* line 22, ../sass/modules/_time.scss */
-.hr {
-  text-align: right;
-}
-
-/* line 25, ../sass/modules/_time.scss */
-.sc {
-  text-align: left;
-}
-
-/* line 28, ../sass/modules/_time.scss */
+/* line 33, ../sass/modules/_time.scss */
 .current-date {
   margin-bottom: 2em;
 }
 
-/* line 34, ../sass/modules/_time.scss */
+/* line 39, ../sass/modules/_time.scss */
 .clock {
   width: 32px;
   height: 32px;
   fill: #78787A;
 }
 
-/* line 39, ../sass/modules/_time.scss */
+/* line 44, ../sass/modules/_time.scss */
 .clock.is-x10 {
   width: 100px;
   height: 100px;
   opacity: 0.05;
+  position: absolute;
+  top: 7em;
+  left: 50%;
+  margin-left: -50px;
 }
 @media only screen and (min-height: 600px) {
-  /* line 39, ../sass/modules/_time.scss */
+  /* line 44, ../sass/modules/_time.scss */
   .clock.is-x10 {
     width: 350px;
     height: 350px;
+    margin-left: -175px;
   }
 }
 @media only screen and (min-width: 1000px) {
-  /* line 39, ../sass/modules/_time.scss */
+  /* line 44, ../sass/modules/_time.scss */
   .clock.is-x10 {
     margin-top: -7em;
   }
 }
 @media only screen and (min-width: 1200px) {
-  /* line 39, ../sass/modules/_time.scss */
+  /* line 44, ../sass/modules/_time.scss */
   .clock.is-x10 {
-    margin-top: -5em;
+    margin-top: 1em;
   }
 }
 
