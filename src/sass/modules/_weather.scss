@@ -182,8 +182,8 @@
 .wind-speed--icon {
     display: inline-block;
     position: absolute;
-    top: 0;
-    left: 1px;
+    top: -1px;
+    left: 0px;
     width: 25px;
     height: 25px;
     transition: all 0.3s;
