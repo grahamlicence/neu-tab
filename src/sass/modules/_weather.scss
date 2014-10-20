@@ -201,10 +201,11 @@
 }
 .wind-speed--value {
     position: absolute;
-    top: 0;
-    left: 2px;
+    top: 0px;
+    left: 3px;
     text-align: center;
     width: 20px;
+    font-size: 18px;
 }
 
 // additional information reveal animations

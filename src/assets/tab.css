@@ -862,45 +862,46 @@ a:hover, a:focus {
 /* line 202, ../sass/modules/_weather.scss */
 .wind-speed--value {
   position: absolute;
-  top: 0;
-  left: 2px;
+  top: 0px;
+  left: 3px;
   text-align: center;
   width: 20px;
+  font-size: 18px;
 }
 
-/* line 213, ../sass/modules/_weather.scss */
+/* line 214, ../sass/modules/_weather.scss */
 .weather-forecast:hover .todays-temp {
   opacity: 1;
   left: 0;
 }
-/* line 217, ../sass/modules/_weather.scss */
+/* line 218, ../sass/modules/_weather.scss */
 .weather-forecast:hover .feels-like {
   opacity: 1;
   right: 0;
 }
-/* line 221, ../sass/modules/_weather.scss */
+/* line 222, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunrise {
   opacity: 1;
   top: 0;
 }
-/* line 225, ../sass/modules/_weather.scss */
+/* line 226, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset {
   top: 0;
 }
-/* line 227, ../sass/modules/_weather.scss */
+/* line 228, ../sass/modules/_weather.scss */
 .weather-forecast:hover .sunset:before {
   top: -17px;
   font-size: 30px;
   left: 0;
 }
 
-/* line 236, ../sass/modules/_weather.scss */
+/* line 237, ../sass/modules/_weather.scss */
 .forecast-summary {
   opacity: 0;
   transition: opacity 0.3s;
   color: #454547;
 }
-/* line 240, ../sass/modules/_weather.scss */
+/* line 241, ../sass/modules/_weather.scss */
 .forecast-summary.shown {
   opacity: 1;
 }
