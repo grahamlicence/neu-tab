@@ -61,7 +61,7 @@ Tab.showTime = function () {
           els[2].setAttribute('transform', 'rotate('+360*(seconds/MINUTE)+',16,17)');
           els[1].setAttribute('transform', 'rotate('+360*(minutes/HOUR)+',16,17)');
           els[0].setAttribute('transform', 'rotate('+360*(hours/(12*HOUR))+',16,17)');
-        }
+        };
         setTime();
         var interval = setInterval(setTime,1000);
     }
@@ -85,6 +85,7 @@ Tab.showTime = function () {
             seconds = '0' + seconds;
         }
         time.innerHTML = '<span class="bk hr">' + hours + '</span>:<span class="bk mn">' + minutes + '</span>:<span class="bk sc">' + seconds + '</span>';
+        // time.innerHTML = '<span class="bk hr">00</span>:<span class="bk mn">00</span>:<span class="bk sc">00</span>';
     }
     function showDay () {
         var today = new Date(),

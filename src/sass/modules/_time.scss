@@ -21,15 +21,15 @@
         min-width: 165px;
     }
     @media #{$large} {
-        min-width: 235px;
+        min-width: 240px;
     }
 }
 // .hr {
 //     text-align: right;
 // }
-// .sc {
-//     text-align: left;
-// }
+.sc {
+    text-align: left;
+}
 .current-date {
     margin-bottom: 2em;
 }

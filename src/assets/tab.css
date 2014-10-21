@@ -559,8 +559,13 @@ a:hover, a:focus {
 @media only screen and (min-width: 1200px) {
   /* line 16, ../sass/modules/_time.scss */
   .bk {
-    min-width: 235px;
+    min-width: 240px;
   }
+}
+
+/* line 30, ../sass/modules/_time.scss */
+.sc {
+  text-align: left;
 }
 
 /* line 33, ../sass/modules/_time.scss */
