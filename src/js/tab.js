@@ -107,7 +107,7 @@ Tab.showTime = function () {
     showDay();
     
     bodyTag.className = 'load';
-    weatherLoader.className = 'weather-loader'
+    weatherLoader.className = 'weather-loader';
     bodyTag.appendChild(weatherLoader);
 };
 
@@ -192,9 +192,14 @@ Tab.locationData = function (usingPrevious) {
         weather.className = 'weather-forecast';
         console.log(results)
         htmlData = '<div class="weather-now icon icon-' + results.item.condition.code + '"><p class="weather-temp">' + results.item.condition.temp + '&deg;' +
-            results.units.temperature + '</p>' +
-            '<p class="type">' + results.item.condition.text + '</p>' +
-            '<p class="todays-temp">Today, low: ' + results.item.forecast[0].low + '&deg;' + temp + ', high: ' + results.item.forecast[0].high + '&deg;' + temp + '</p>' +
+            results.units.temperature + '</p>';
+        // Sometime the condition can be Unknown
+        if (results.item.condition.text !== 'Unknown') {
+            htmlData += '<p class="type">' + results.item.condition.text + '</p>';
+        } else {
+            htmlData += '<p>&nbsp;</p>';
+        }
+        htmlData += '<p class="todays-temp">Today, low: ' + results.item.forecast[0].low + '&deg;' + temp + ', high: ' + results.item.forecast[0].high + '&deg;' + temp + '</p>' +
             '<div class="weather-details">' +
             '<p class="wind-speed" title="Wind speed ' + kmTpMph(results.wind.speed) + 'mph, ' + degToCompass(parseFloat(results.wind.direction)) + '">' +
             '<i class="wind-speed--icon" style="-webkit-transform: rotate(' + (parseFloat(results.wind.direction) + 180) + 'deg);"></i>' +
@@ -270,19 +275,19 @@ Tab.locationData = function (usingPrevious) {
             var data = JSON.parse(reqW.responseText);
             localStorage.setItem('weatherUpdate', Date.now());
             localStorage.setItem('weatherData', JSON.stringify(data));
-            displayWeather(data)
+            displayWeather(data);
           } else {
             // error
-            console.log('error on load')
+            console.log('error on load');
           }
         };
 
         reqW.onerror = function() {
-            console.log('connection error')
+            console.log('connection error');
         };
 
         reqW.ontimeout = function () {
-            console.log('timeout')
+            console.log('timeout');
         };
 
         reqW.send();
@@ -292,7 +297,7 @@ Tab.locationData = function (usingPrevious) {
     var lastChecked = parseInt(localStorage.getItem('weatherUpdate'), 10);
     // check weather every hour
     if (Date.now() - lastChecked > 3600000) {
-        console.log('New forecast')
+        console.log('New forecast');
         // console.log(Date.now() - lastChecked + '/' + 7200000)
         fetchWeatherForecast();
     } else {
